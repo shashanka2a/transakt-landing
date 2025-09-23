@@ -45,7 +45,7 @@ export function AppFlowIllustration() {
             <div className="w-3 h-3 bg-yellow-400 rounded-full" />
             <div className="w-3 h-3 bg-green-400 rounded-full" />
             <div className="ml-4 bg-white rounded px-3 py-1 text-sm text-gray-600 border border-gray-200 flex-1">
-              checkout.yourbusiness.com
+              checkout.trasakt.online
             </div>
           </div>
         </div>

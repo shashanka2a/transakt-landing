@@ -100,37 +100,7 @@ export function Pricing({ id }: { id?: string }) {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div className="flex items-start gap-3">
-            <CreditCard className="w-6 h-6 text-blue-600 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-gray-900">Multiple payment methods</h4>
-              <p className="text-gray-600">
-                Accept cards, crypto, and digital wallets with automatic currency conversion.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <ShieldCheck className="w-6 h-6 text-blue-600 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-gray-900">Enterprise-grade security</h4>
-              <p className="text-gray-600">
-                PCI compliant, real-time fraud detection, and 99.9% uptime.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-gray-900">No hidden fees</h4>
-              <p className="text-gray-600">
-                What you see is what you pay. No surprises.
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
