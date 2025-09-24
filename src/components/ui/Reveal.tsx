@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, type ElementType } from "react";
 import { cn } from "./utils";
 
 export function useReveal(options?: IntersectionObserverInit) {
-  const elementRef = useRef<HTMLElement | null>(null);
+  const elementRef = useRef<HTMLDivElement | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
@@ -30,21 +30,23 @@ export function useReveal(options?: IntersectionObserverInit) {
   return { elementRef, isRevealed };
 }
 
+type RevealElement = ElementType;
+
 export function Reveal({
   as: Component = "div",
   className,
   children,
   delay = 0,
 }: {
-  as?: any;
+  as?: RevealElement;
   className?: string;
   children: React.ReactNode;
   delay?: number;
 }) {
   const { elementRef, isRevealed } = useReveal();
   return (
-    <Component
-      ref={elementRef as any}
+    <div
+      ref={elementRef}
       className={cn(
         "transition-all duration-700 ease-out will-change-transform",
         isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
@@ -52,8 +54,10 @@ export function Reveal({
       )}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {children}
-    </Component>
+      <Component>
+        {children}
+      </Component>
+    </div>
   );
 }
 

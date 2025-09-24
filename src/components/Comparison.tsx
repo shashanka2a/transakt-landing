@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 export function Comparison({ id }: { id?: string }) {
   const rows = [
     {
