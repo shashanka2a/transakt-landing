@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Star } from "lucide-react";
 import { Card } from "./ui/card";
+import { Reveal } from "./ui/utils";
 
 const testimonials = [
   {
@@ -54,7 +55,8 @@ export function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Reveal key={index} delay={index * 80}>
+              <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
               {/* Rating */}
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -83,7 +85,8 @@ export function Testimonials() {
                   </div>
                 </div>
               </div>
-            </Card>
+              </Card>
+            </Reveal>
           ))}
         </div>
 

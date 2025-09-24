@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Utensils, Scissors, Video, Building2 } from "lucide-react";
 import { Card } from "./ui/card";
+import { Reveal } from "./ui/utils";
 
 const useCases = [
   {
@@ -55,7 +56,8 @@ export function UseCases() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {useCases.map((useCase, index) => (
-            <Card key={index} className="relative p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+            <Reveal key={index} delay={index * 80}>
+              <Card className="relative p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden hover:-translate-y-1">
               <div className="relative z-10">
                 {/* Icon */}
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${useCase.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -86,7 +88,8 @@ export function UseCases() {
               
               {/* Decorative gradient line */}
               <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${useCase.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-            </Card>
+              </Card>
+            </Reveal>
           ))}
         </div>
 

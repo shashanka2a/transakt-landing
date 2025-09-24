@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { CreditCard, Zap, Shield } from "lucide-react";
 import { Button } from "./ui/button";
+import { Reveal } from "./ui/utils";
 
 const features = [
   {
@@ -44,7 +45,7 @@ export function Features({ id }: { id?: string }) {
         {/* Features grid */}
         <div className="grid lg:grid-cols-3 gap-12 mb-20">
           {features.map((feature, index) => (
-            <div key={index} className="text-center group">
+            <Reveal key={index} className="text-center group" delay={index * 80}>
               {/* Icon */}
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <feature.icon className="w-8 h-8 text-white" />
@@ -67,12 +68,12 @@ export function Features({ id }: { id?: string }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Crypto support section - simplified */}
-        <div className="text-center bg-white rounded-2xl p-12 shadow-sm border border-gray-100">
+        <Reveal className="text-center bg-white rounded-2xl p-12 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
           <h3 className="text-2xl font-bold mb-4 text-gray-900">
             Built-in crypto support
           </h3>
@@ -107,7 +108,7 @@ export function Features({ id }: { id?: string }) {
           <Button variant="outline" className="border-gray-300 hover:bg-gray-50">
             See planned integrations →
           </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

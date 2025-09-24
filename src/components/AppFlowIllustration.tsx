@@ -37,7 +37,7 @@ export function AppFlowIllustration() {
   return (
     <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200 shadow-xl">
       {/* Mock browser window */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
         {/* Browser header */}
         <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
           <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function AppFlowIllustration() {
           </div>
 
           {/* Current step indicator */}
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
+          <div className="bg-gray-50 rounded-lg p-4 mb-6 transition-colors duration-300 hover:bg-gray-100">
             <div className="flex items-center gap-3">
               <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${steps[currentStep].color} flex items-center justify-center`}>
                 {(() => {

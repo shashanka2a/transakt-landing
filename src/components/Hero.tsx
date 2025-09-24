@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { AppFlowIllustration } from "./AppFlowIllustration";
+import { Reveal } from "./ui/utils";
 
 export function Hero() {
   return (
@@ -16,9 +17,9 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
-          <div className="text-center lg:text-left">
+          <Reveal className="text-center lg:text-left">
             {/* Pre-launch badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-8 hover:shadow-sm transition-shadow">
               <Sparkles className="w-4 h-4 text-blue-600" />
               <span className="text-sm font-medium text-blue-700">
                 Launching soon - Early access available
@@ -62,8 +63,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
               <Button 
                 size="lg" 
-                className="px-8 py-6 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
+                className="px-8 py-6 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-0.5 active:translate-y-0">
                 Join Early Access
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -94,14 +94,14 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right side - App flow illustration */}
-          <div className="relative">
+          <Reveal delay={150} className="relative">
             <AppFlowIllustration />
             
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg border border-gray-200 p-4 max-w-xs">
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg border border-gray-200 p-4 max-w-xs transition-transform hover:-translate-y-0.5">
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-medium text-sm">AK</span>
@@ -112,7 +112,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
