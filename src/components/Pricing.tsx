@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
-import { Reveal } from "./ui/utils";
+import { Reveal } from "./ui/Reveal";
 
 const plans = [
   {

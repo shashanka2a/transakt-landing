@@ -2,7 +2,7 @@
 import { Button } from "./ui/button";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { AppFlowIllustration } from "./AppFlowIllustration";
-import { Reveal } from "./ui/utils";
+import { Reveal } from "./ui/Reveal";
 
 export function Hero() {
   return (

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { CreditCard, Zap, Shield } from "lucide-react";
 import { Button } from "./ui/button";
-import { Reveal } from "./ui/utils";
+import { Reveal } from "./ui/Reveal";
 
 const features = [
   {

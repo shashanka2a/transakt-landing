@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Star } from "lucide-react";
 import { Card } from "./ui/card";
-import { Reveal } from "./ui/utils";
+import { Reveal } from "./ui/Reveal";
 
 const testimonials = [
   {
