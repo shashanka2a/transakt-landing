@@ -49,7 +49,7 @@ export default function Home() {
               </h2>
 
               <p className="text-base sm:text-lg app-muted max-w-xl mx-auto">
-                Join our private alpha on Base. Zero seed phrases, gasless subname issuance, and World ID Selfie Check in less than 60 seconds.
+                Join our private alpha on ETH Sepolia. Zero seed phrases, gasless subname issuance, and World ID Selfie Check in less than 60 seconds.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -73,7 +73,7 @@ export default function Home() {
                 </span>
                 <span className="flex items-center space-x-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span>100% Gasless on L2</span>
+                  <span>100% Gasless on Sepolia</span>
                 </span>
               </div>
             </div>

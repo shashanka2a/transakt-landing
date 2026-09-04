@@ -44,12 +44,7 @@ export function Navbar({ onOpenEarlyAccess }: NavbarProps) {
           <div className="w-10 h-10 rounded-xl app-accent-bg flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
             <TxLogo className="w-6 h-6" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight app-text leading-tight">Transakt</span>
-            <span className="text-[10px] font-semibold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">
-              Family ENS PWA
-            </span>
-          </div>
+          <span className="text-xl font-bold tracking-tight app-text">Transakt</span>
         </a>
 
         {/* Desktop Nav Links */}

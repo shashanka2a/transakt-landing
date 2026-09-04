@@ -32,25 +32,54 @@ export const UniswapIcon = ({ className = "w-5 h-5" }: { className?: string }) =
   </svg>
 );
 
+// Official World ID Orb / Aperture Logomark
 export const WorldIdIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-    <path d="M2 12h20" />
+    <circle cx="12" cy="12" r="9.5" />
+    <line x1="2.5" y1="12" x2="21.5" y2="12" />
+    <path d="M12 2.5a13.5 13.5 0 0 1 0 19" />
+    <path d="M12 2.5a13.5 13.5 0 0 0 0 19" />
+    <circle cx="12" cy="12" r="3.2" fill="currentColor" fillOpacity="0.25" />
   </svg>
 );
 
+// Official ENS (Ethereum Name Service) Folded Hexagon Ribbon Logomark
 export const EnsIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V5s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-    <line x1="4" y1="22" x2="4" y2="15" />
+  <svg viewBox="0 0 24 24" fill="none" className={className}>
+    <path
+      d="M12 2L3.5 6.9V17.1L12 22L20.5 17.1V6.9L12 2Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12 6.5L7.5 9.1V14.9L12 17.5L16.5 14.9V9.1L12 6.5Z"
+      fill="currentColor"
+      fillOpacity="0.2"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12 2V6.5M3.5 6.9L7.5 9.1M20.5 6.9L16.5 9.1M20.5 17.1L16.5 14.9M3.5 17.1L7.5 14.9M12 22V17.5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
+// Official Privy Padlock & Shield Logomark
 export const PrivyIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="18" height="18" x="3" y="3" rx="4" />
-    <path d="m9 12 2 2 4-4" />
+  <svg viewBox="0 0 24 24" fill="none" className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.12" />
+    <path
+      d="M8.5 16.5V7.5H13C14.933 7.5 16.5 9.067 16.5 11C16.5 12.933 14.933 14.5 13 14.5H8.5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <circle cx="12.5" cy="11" r="1.5" fill="currentColor" />
   </svg>
 );
-

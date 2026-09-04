@@ -13,7 +13,6 @@ import {
   CheckCircle2,
   Check,
   Zap,
-  Camera,
   ShieldCheck
 } from "lucide-react";
 import { TxLogo, EthereumIcon, UniswapIcon, WorldIdIcon } from "./Icons";
@@ -28,14 +27,13 @@ interface PWAStep {
   id: string;
   tab: TabType;
   title: string;
-  island: string;
 }
 
 const PWA_STEPS: PWAStep[] = [
-  { id: "home", tab: "home", title: "1. Family Treasury", island: "⚡ PWA • Base L2" },
-  { id: "send", tab: "send", title: "2. Gasless Send", island: "⛽ $0.00 Gas Relay" },
-  { id: "selfie", tab: "send", title: "3. World ID Selfie Check", island: "🌐 World ID ZK Check" },
-  { id: "activity", tab: "activity", title: "4. Instant L2 Activity", island: "🟢 Confirmed on Base" },
+  { id: "home", tab: "home", title: "Family Treasury" },
+  { id: "send", tab: "send", title: "Gasless Send" },
+  { id: "selfie", tab: "send", title: "World ID Selfie Check" },
+  { id: "activity", tab: "activity", title: "L2 Activity" },
 ];
 
 export function MockPhone({ isDark = false }: MockPhoneProps) {
@@ -68,7 +66,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span className="text-[11px] font-bold app-text tracking-tight">Base L2 • Gas Sponsored</span>
+        <span className="text-[11px] font-bold app-text tracking-tight">ETH Sepolia • Gas Sponsored</span>
       </div>
 
       {/* Floating Status HUD Pill 2: Bottom-Left */}
@@ -87,38 +85,14 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
         }
         flex flex-col font-sans`}
       >
-        {/* PWA Flow Step Indicator Bar at very top */}
-        <div className="absolute top-1 inset-x-8 z-50 flex space-x-1.5 pt-1">
-          {PWA_STEPS.map((step, idx) => (
-            <div
-              key={step.id}
-              className="h-1 flex-1 rounded-full bg-black/15 dark:bg-white/20 overflow-hidden"
-            >
-              <div
-                className={`h-full bg-emerald-500 transition-all duration-500 ${
-                  idx === stepIndex
-                    ? "w-full"
-                    : idx < stepIndex
-                    ? "w-full opacity-60"
-                    : "w-0"
-                }`}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Dynamic Island / Active Notification Notch */}
-        <div className="absolute top-3.5 left-1/2 -translate-x-1/2 z-40 transition-all duration-300">
-          <div className="h-6 px-3 bg-black text-white rounded-full flex items-center justify-between space-x-2 shadow-md">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span className="text-[9px] font-bold tracking-tight text-neutral-200">
-              {currentStep.island}
-            </span>
-          </div>
+        {/* Clean Dynamic Island Hardware Notch (No text inside) */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-40 w-24 h-4 bg-black rounded-full flex items-center justify-end px-2.5 shadow-sm">
+          <div className="w-1.5 h-1.5 rounded-full bg-neutral-900 border border-neutral-800"></div>
+          <div className="w-1 h-1 rounded-full bg-neutral-800/80 ml-1.5"></div>
         </div>
 
         {/* Status Bar */}
-        <div className="absolute top-0 w-full h-8 flex justify-between items-center px-6 z-20 text-[11px] font-medium app-text opacity-75 pt-3">
+        <div className="absolute top-0 w-full h-8 flex justify-between items-center px-6 z-20 text-[11px] font-medium app-text opacity-75 pt-3.5">
           <span>9:41</span>
           <div className="flex space-x-1.5 items-center">
             <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
@@ -169,14 +143,14 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
         )}
 
         {/* Header */}
-        <div className="px-5 pt-14 pb-2 flex justify-between items-center z-10">
+        <div className="px-5 pt-13 pb-2 flex justify-between items-center z-10">
           <div className="flex items-center space-x-2">
             <div className="w-7 h-7 rounded-lg app-accent-bg flex items-center justify-center shadow-xs">
               <TxLogo className="w-4 h-4" />
             </div>
             <div className="flex flex-col text-left">
               <span className="font-bold text-sm tracking-tight app-text leading-tight">smithfam.eth</span>
-              <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">PWA • Mainnet/Base</span>
+              <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">PWA • ETH Sepolia</span>
             </div>
           </div>
           <div className="w-8 h-8 rounded-full app-surface flex items-center justify-center shadow-xs">
@@ -188,7 +162,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
         <div className="flex-1 overflow-y-auto no-scrollbar pb-18 px-1">
           {/* STEP 1: HOME OVERVIEW */}
           {activeTab === "home" && (
-            <>
+            <div className="animate-count-up">
               {/* Balance Hero */}
               <div className="px-5 py-3 flex flex-col items-center">
                 <p className="app-muted text-[11px] font-semibold uppercase tracking-wider mb-1">
@@ -329,11 +303,11 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                     </div>
                   </div>
                   <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-                    Gasless (Base)
+                    Gasless (Sepolia)
                   </span>
                 </div>
               </div>
-            </>
+            </div>
           )}
 
           {/* STEP 2 & 3: GASLESS SEND & WORLD ID CHECK */}
@@ -371,7 +345,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           {activeTab === "activity" && (
             <div className="p-4 space-y-3 animate-count-up text-left">
               <div className="flex justify-between items-center">
-                <h3 className="text-sm font-bold app-text">Onchain History (Base L2)</h3>
+                <h3 className="text-sm font-bold app-text">Onchain History (ETH Sepolia)</h3>
                 <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
                   Live Finality
                 </span>
@@ -409,7 +383,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-emerald-600 dark:text-emerald-400">+0.15 ETH</p>
-                    <p className="text-[9px] app-muted">Base L2</p>
+                    <p className="text-[9px] app-muted">ETH Sepolia</p>
                   </div>
                 </div>
               </div>

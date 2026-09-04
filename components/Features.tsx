@@ -33,7 +33,7 @@ const features = [
     title: "Gasless Relay",
     tag: "ERC-4337 Account Abstraction",
     description:
-      "Every transaction is bundled through paymasters on Layer 2 (Base). Your family transacts with zero gas fee confusion or failed nonce errors.",
+      "Every transaction is bundled through paymasters on ETH Sepolia. Your family transacts with zero gas fee confusion or failed nonce errors.",
     highlight: "100% sponsored gas fees",
   },
 ];
@@ -59,10 +59,8 @@ export function Features() {
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className="app-surface p-7 sm:p-9 rounded-3xl group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-black/5 dark:border-white/5 relative overflow-hidden"
+            className="app-surface p-7 sm:p-9 rounded-3xl group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-black/10 dark:border-white/10 relative overflow-hidden"
           >
-            {/* Corner accent glow on hover */}
-            <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 group-hover:bg-emerald-500/10 rounded-bl-full transition-colors duration-500 pointer-events-none"></div>
 
             <div>
               <div className="flex items-center justify-between mb-6">

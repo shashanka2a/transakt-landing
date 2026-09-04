@@ -1,24 +1,103 @@
 "use client";
 
-import React, { useState } from "react";
-import { Users, CheckCircle2, ChevronRight, Lock, Unlock, Send, Check } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Users, CheckCircle2, ChevronRight, Lock, Unlock, Check, Zap } from "lucide-react";
+
+interface DemoCycle {
+  name: string;
+  limit: number;
+  defi: boolean;
+}
+
+const DEMO_CYCLES: DemoCycle[] = [
+  { name: "alex", limit: 75, defi: true },
+  { name: "chloe", limit: 40, defi: false },
+  { name: "sarah", limit: 120, defi: true },
+];
 
 export function SubnameDeepDive() {
+  const [mounted, setMounted] = useState(false);
+  const [cycleIndex, setCycleIndex] = useState(0);
   const [subname, setSubname] = useState("alex");
   const [weeklyLimit, setWeeklyLimit] = useState(50);
   const [defiAllowed, setDefiAllowed] = useState(false);
-  const [minted, setMinted] = useState(false);
   const [isMinting, setIsMinting] = useState(false);
+  const [minted, setMinted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMint = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsMinting(true);
-    setTimeout(() => {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Continuous Automated Animation Loop
+  useEffect(() => {
+    if (!mounted || isHovered) return;
+
+    let isCancelled = false;
+    const target = DEMO_CYCLES[cycleIndex];
+
+    const runCycle = async () => {
+      // 1. Reset state
+      setMinted(false);
+      setIsMinting(false);
+      setSubname("");
+
+      // 2. Typewriter effect for name
+      for (let i = 1; i <= target.name.length; i++) {
+        if (isCancelled) return;
+        await new Promise((r) => setTimeout(r, 160));
+        setSubname(target.name.slice(0, i));
+      }
+
+      await new Promise((r) => setTimeout(r, 400));
+      if (isCancelled) return;
+
+      // 3. Smooth Slider Adjustment
+      const startLimit = 25;
+      const targetLimit = target.limit;
+      const stepCount = 8;
+      for (let s = 1; s <= stepCount; s++) {
+        if (isCancelled) return;
+        await new Promise((r) => setTimeout(r, 70));
+        const val = Math.round(startLimit + (targetLimit - startLimit) * (s / stepCount));
+        setWeeklyLimit(val);
+      }
+
+      await new Promise((r) => setTimeout(r, 400));
+      if (isCancelled) return;
+
+      // 4. Toggle DeFi Permissions
+      setDefiAllowed(target.defi);
+
+      await new Promise((r) => setTimeout(r, 600));
+      if (isCancelled) return;
+
+      // 5. Trigger Mint Action
+      setIsMinting(true);
+      await new Promise((r) => setTimeout(r, 900));
+      if (isCancelled) return;
+
       setIsMinting(false);
       setMinted(true);
-      setTimeout(() => setMinted(false), 4500);
-    }, 800);
-  };
+
+      // 6. Show Success Toast Preview
+      await new Promise((r) => setTimeout(r, 2600));
+      if (isCancelled) return;
+
+      setMinted(false);
+      await new Promise((r) => setTimeout(r, 400));
+      if (isCancelled) return;
+
+      // Advance to next cycle
+      setCycleIndex((prev) => (prev + 1) % DEMO_CYCLES.length);
+    };
+
+    runCycle();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [mounted, cycleIndex, isHovered]);
 
   return (
     <section id="subnames" className="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
@@ -28,7 +107,7 @@ export function SubnameDeepDive() {
 
         {/* Left Column: Explanation */}
         <div className="flex-1 space-y-6 relative z-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-xs tracking-wider">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-xs tracking-wider">
             <Users className="w-3.5 h-3.5" />
             <span>INTERACTIVE SUB-IDENTITY BUILDER</span>
           </div>
@@ -46,7 +125,7 @@ export function SubnameDeepDive() {
               {
                 step: "1",
                 title: "Choose subname identity",
-                desc: "Mint gasless subdomains like alex.smithfam.eth directly on Base.",
+                desc: "Mint gasless subdomains like alex.smithfam.eth directly on ETH Sepolia.",
               },
               {
                 step: "2",
@@ -72,8 +151,12 @@ export function SubnameDeepDive() {
           </div>
         </div>
 
-        {/* Right Column: Interactive Simulator Card */}
-        <div className="flex-1 w-full max-w-md relative z-10">
+        {/* Right Column: Animated Simulator Card */}
+        <div
+          className="flex-1 w-full max-w-md relative z-10"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div className="bg-white dark:bg-[#120F0C] rounded-3xl p-6 sm:p-8 shadow-2xl border border-black/10 dark:border-white/10 relative overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-black/5 dark:border-white/5">
@@ -81,39 +164,44 @@ export function SubnameDeepDive() {
                 <Users className="w-5 h-5 text-emerald-500" />
                 <h4 className="font-bold app-text text-base">Mint Family Subname</h4>
               </div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                ENS Offchain L2
-              </span>
+              <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>ENS Offchain Sepolia</span>
+              </div>
             </div>
 
             {/* Simulator Form */}
-            <form onSubmit={handleMint} className="space-y-5">
-              {/* ENS Name Input */}
+            <div className="space-y-5">
+              {/* ENS Name Input with Animated Typing */}
               <div>
                 <label className="text-[11px] font-bold app-muted uppercase tracking-wider mb-2 block">
                   Assign ENS Handle
                 </label>
-                <div className="flex items-center app-surface rounded-xl p-3 border border-black/10 dark:border-white/10 focus-within:ring-2 ring-emerald-500 transition-all shadow-inner">
-                  <input
-                    type="text"
-                    value={subname}
-                    onChange={(e) => setSubname(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
-                    placeholder="child-name"
-                    className="bg-transparent font-bold text-sm sm:text-base app-text outline-none w-28 sm:w-32"
-                    maxLength={16}
+                <div className="flex items-center app-surface rounded-xl p-3 border border-black/10 dark:border-white/10 ring-2 ring-emerald-500/40 transition-all shadow-inner">
+                  <div className="flex items-center">
+                    <span className="font-bold text-sm sm:text-base app-text min-w-[20px]">
+                      {subname || ""}
+                    </span>
+                    <span className="inline-block w-0.5 h-4 bg-emerald-500 animate-pulse ml-0.5"></span>
+                  </div>
+                  <span className="font-bold text-xs sm:text-sm text-neutral-400 ml-1">
+                    .smithfam.eth
+                  </span>
+                  <CheckCircle2
+                    className={`w-4 h-4 ml-auto shrink-0 transition-opacity duration-300 ${
+                      subname ? "text-emerald-500 opacity-100" : "opacity-20 text-neutral-400"
+                    }`}
                   />
-                  <span className="font-bold text-xs sm:text-sm text-neutral-400">.smithfam.eth</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 ml-auto shrink-0" />
                 </div>
               </div>
 
-              {/* Weekly Limit Range Slider */}
+              {/* Weekly Limit Range Slider with Animated Value */}
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <label className="text-[11px] font-bold app-muted uppercase tracking-wider">
                     Weekly Allowance
                   </label>
-                  <span className="text-sm font-black app-text px-2 py-0.5 rounded-md bg-black/5 dark:bg-white/10">
+                  <span className="text-sm font-black app-text px-2.5 py-0.5 rounded-md bg-black/5 dark:bg-white/10 transition-all">
                     ${weeklyLimit} / wk
                   </span>
                 </div>
@@ -123,8 +211,8 @@ export function SubnameDeepDive() {
                   max="250"
                   step="5"
                   value={weeklyLimit}
-                  onChange={(e) => setWeeklyLimit(Number(e.target.value))}
-                  className="w-full h-2 bg-neutral-200 dark:bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                  readOnly
+                  className="w-full h-2 bg-neutral-200 dark:bg-neutral-800 rounded-lg appearance-none pointer-events-none accent-emerald-500 transition-all"
                 />
                 <div className="flex justify-between text-[10px] app-muted font-medium mt-1">
                   <span>$10 min</span>
@@ -132,7 +220,7 @@ export function SubnameDeepDive() {
                 </div>
               </div>
 
-              {/* Permissions Toggles */}
+              {/* Permissions Toggles with Animated Switch */}
               <div>
                 <label className="text-[11px] font-bold app-muted uppercase tracking-wider mb-2 block">
                   Permissions & Safeguards
@@ -145,25 +233,22 @@ export function SubnameDeepDive() {
                     </span>
                   </div>
 
-                  <div
-                    onClick={() => setDefiAllowed(!defiAllowed)}
-                    className="p-3 flex justify-between items-center cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-                  >
+                  <div className="p-3 flex justify-between items-center transition-colors">
                     <span className="text-xs font-semibold app-text flex items-center space-x-2">
                       {defiAllowed ? (
-                        <Unlock className="w-3.5 h-3.5 text-emerald-500" />
+                        <Unlock className="w-3.5 h-3.5 text-emerald-500 transition-colors" />
                       ) : (
-                        <Lock className="w-3.5 h-3.5 text-amber-500" />
+                        <Lock className="w-3.5 h-3.5 text-amber-500 transition-colors" />
                       )}
                       <span>DeFi Protocols Access</span>
                     </span>
                     <div
-                      className={`w-9 h-5 rounded-full p-0.5 transition-colors ${
+                      className={`w-9 h-5 rounded-full p-0.5 transition-colors duration-300 ${
                         defiAllowed ? "bg-emerald-500" : "bg-neutral-300 dark:bg-neutral-700"
                       }`}
                     >
                       <div
-                        className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                        className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
                           defiAllowed ? "translate-x-4" : "translate-x-0"
                         }`}
                       ></div>
@@ -172,11 +257,11 @@ export function SubnameDeepDive() {
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isMinting || !subname}
-                className="w-full py-3.5 app-accent-bg rounded-xl font-bold text-sm mt-2 flex items-center justify-center space-x-2 shadow-md hover:opacity-90 active:scale-98 transition-all disabled:opacity-50 cursor-pointer"
+              {/* Submit Button with Animated Spin & State */}
+              <div
+                className={`w-full py-3.5 app-accent-bg rounded-xl font-bold text-sm mt-2 flex items-center justify-center space-x-2 shadow-md transition-all ${
+                  isMinting ? "opacity-90 scale-98" : ""
+                }`}
               >
                 {isMinting ? (
                   <>
@@ -189,28 +274,25 @@ export function SubnameDeepDive() {
                     <ChevronRight className="w-4 h-4" />
                   </>
                 )}
-              </button>
-            </form>
+              </div>
+            </div>
 
-            {/* Success Toast Preview */}
+            {/* Success Toast Preview Overlay */}
             {minted && (
               <div className="absolute inset-0 bg-white/95 dark:bg-[#120F0C]/95 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center justify-center text-center animate-count-up z-20">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3 shadow-xs">
                   <Check className="w-6 h-6 stroke-[3]" />
                 </div>
                 <h5 className="font-extrabold text-base app-text mb-1">Subname Created!</h5>
-                <p className="text-xs font-semibold app-accent mb-2">
+                <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
                   {subname || "alex"}.smithfam.eth
                 </p>
-                <p className="text-[11px] app-muted mb-4 max-w-[240px]">
-                  Invite link with passkey onboarding is ready to share. Spend limit: ${weeklyLimit}/wk.
+                <p className="text-[11px] app-muted mb-4 max-w-[240px] leading-relaxed">
+                  Invite link with World ID Selfie Check is ready to share. Spend limit: ${weeklyLimit}/wk.
                 </p>
-                <button
-                  onClick={() => setMinted(false)}
-                  className="px-4 py-2 app-surface rounded-lg text-xs font-bold app-text border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5"
-                >
-                  Create Another
-                </button>
+                <div className="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
+                  ✓ Relayed on ETH Sepolia ($0.00 Gas)
+                </div>
               </div>
             )}
           </div>

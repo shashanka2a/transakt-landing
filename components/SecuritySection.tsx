@@ -66,24 +66,13 @@ export function SecuritySection() {
         {sponsors.map((sponsor, idx) => (
           <div
             key={idx}
-            className="app-surface p-8 rounded-3xl border border-black/5 dark:border-white/5 flex flex-col justify-between hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+            className="app-surface p-8 rounded-3xl border border-black/10 dark:border-white/10 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
           >
-            {/* Ambient Corner Glow on Hover */}
-            <div
-              className={`absolute top-0 right-0 w-28 h-28 rounded-bl-full transition-colors duration-500 pointer-events-none ${
-                sponsor.color === "blue"
-                  ? "bg-blue-500/5 group-hover:bg-blue-500/10"
-                  : sponsor.color === "emerald"
-                  ? "bg-emerald-500/5 group-hover:bg-emerald-500/10"
-                  : "bg-purple-500/5 group-hover:bg-purple-500/10"
-              }`}
-            ></div>
-
             <div>
               {/* Card Header */}
               <div className="flex items-center justify-between mb-6">
                 <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-xs ${
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform shadow-xs ${
                     sponsor.color === "blue"
                       ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                       : sponsor.color === "emerald"
@@ -99,7 +88,7 @@ export function SecuritySection() {
               </div>
 
               {/* Card Title */}
-              <div className="mb-4">
+              <div className="mb-5">
                 <span
                   className={`text-xs font-bold uppercase tracking-wider block mb-1 ${
                     sponsor.color === "blue"
@@ -115,9 +104,9 @@ export function SecuritySection() {
               </div>
 
               {/* Bullet Points */}
-              <ul className="space-y-2.5 mb-6">
+              <ul className="space-y-3 mb-6">
                 {sponsor.points.map((point, pIdx) => (
-                  <li key={pIdx} className="flex items-start space-x-2 text-xs sm:text-sm app-muted leading-relaxed">
+                  <li key={pIdx} className="flex items-start space-x-2.5 text-xs sm:text-sm app-muted leading-relaxed">
                     <CheckCircle2
                       className={`w-4 h-4 shrink-0 mt-0.5 ${
                         sponsor.color === "blue"

@@ -98,7 +98,7 @@ export default function OGImage() {
           }}
         >
           <span>transakt.family</span>
-          <span style={{ color: "#00FF87" }}>Base &amp; Ethereum</span>
+          <span style={{ color: "#00FF87" }}>ETH Sepolia</span>
         </div>
       </div>
     ),

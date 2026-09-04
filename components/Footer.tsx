@@ -21,7 +21,7 @@ export function Footer() {
           </p>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>All Systems Operational (Base L2)</span>
+            <span>All Systems Operational (ETH Sepolia)</span>
           </div>
         </div>
 
