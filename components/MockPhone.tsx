@@ -376,7 +376,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
 
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="font-bold app-text">Uniswap V3 Swap</p>
+                    <p className="font-bold app-text">Token Swap</p>
                     <p className="text-[9px] app-muted">0.08 ETH for 250 USDC</p>
                   </div>
                   <div className="text-right">

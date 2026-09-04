@@ -9,7 +9,7 @@ const features = [
     title: "Frictionless Login",
     tag: "Seamless Onboarding",
     description:
-      "Sign up with your email or social account in seconds. Powered by Privy, your account is generated automatically under the hood with zero complex setup.",
+      "Sign up with your email or social account in seconds. Powered by Privy, your account is generated under the hood with zero complex setup.",
     highlight: "One-tap email & social onboarding",
   },
   {
@@ -31,9 +31,9 @@ const features = [
   {
     icon: ArrowLeftRight,
     title: "Swap & Invest",
-    tag: "Powered by Uniswap",
+    tag: "In-App Swaps",
     description:
-      "Swap effortlessly into your favourite crypto assets and tokens directly inside the app using Uniswap. Build and manage your family portfolio with simple, intuitive tools.",
+      "Swap effortlessly into your favourite crypto assets and tokens directly inside the app. Build and manage your family portfolio with simple, intuitive tools.",
     highlight: "Instant decentralized swaps",
   },
 ];

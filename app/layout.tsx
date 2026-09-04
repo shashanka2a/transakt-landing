@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Account Abstraction",
     "ERC-4337",
     "Family Treasury",
-    "Uniswap Swaps",
+    "In-App Swaps",
     "World ID Selfie Check",
     "ETH Sepolia",
     "Ethereum Sepolia",
@@ -113,7 +113,7 @@ const jsonLd = {
   "featureList": [
     "Seamless Privy Smart Onboarding",
     "ENS Offchain Subname Issuance",
-    "Uniswap Token Swaps",
+    "In-App Token Swaps",
     "Multi-Sig Guardian Social Recovery",
     "World ID Zero-Knowledge Step-Up Auth",
   ],

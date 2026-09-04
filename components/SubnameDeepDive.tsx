@@ -117,7 +117,7 @@ export function SubnameDeepDive() {
           </h2>
 
           <p className="text-base sm:text-lg app-muted leading-relaxed max-w-xl">
-            Setting up crypto for your family shouldn&apos;t require a Ph.D. Choose a name, set their weekly spend limit, and send an invite link. Transakt handles the smart contracts, L2 state proofs, and permissions under the hood.
+            Setting up crypto for your family shouldn&apos;t require a Ph.D. Choose a name, set their weekly spend limit, and send an invite link. Transakt handles the smart contracts and permissions under the hood.
           </p>
 
           <div className="space-y-4 pt-4">
@@ -135,7 +135,7 @@ export function SubnameDeepDive() {
               {
                 step: "3",
                 title: "Send one-tap invite link",
-                desc: "Recipient activates their subname via the app with World ID Selfie Check in seconds.",
+                desc: "Recipient activates their subname via the app with World ID in seconds.",
               },
             ].map((item) => (
               <div key={item.step} className="flex items-start space-x-4">
@@ -288,7 +288,7 @@ export function SubnameDeepDive() {
                   {subname || "alex"}.smithfam.eth
                 </p>
                 <p className="text-[11px] app-muted mb-4 max-w-[240px] leading-relaxed">
-                  Invite link with World ID Selfie Check is ready to share. Spend limit: ${weeklyLimit}/wk.
+                  Invite link with World ID is ready to share. Spend limit: ${weeklyLimit}/wk.
                 </p>
                 <div className="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
                   ✓ Relayed on ETH Sepolia ($0.00 Gas)
