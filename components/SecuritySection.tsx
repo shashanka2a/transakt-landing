@@ -11,26 +11,28 @@ export function SecuritySection() {
       tag: "Hierarchical Registries",
       logo: "/ens.png",
       color: "blue",
-      title: "ENSv2 Architecture",
+      title: "ENSv2 Protocol Architecture",
       points: [
-        "Hierarchical registries & subname lifecycle management",
-        "Enhanced Access Control (EAC) & record-level permissions",
-        "Decentralized L2 resolution via ERC-3668 CCIP-read",
+        "Hierarchical registry model with parent-enforced child subname lifecycle rules",
+        "Enhanced Access Control (EAC) with granular record-level read/write permissions",
+        "Decentralized L2 & offchain resolution via ERC-3668 CCIP-read gateway contracts",
+        "Deterministic state verification on ETH Sepolia with gas-optimized record updates",
       ],
-      highlight: "Record-Level Access Control",
+      highlight: "Record-Level Access Control (EAC)",
     },
     {
       name: "Privy",
-      tag: "Embedded Wallets",
+      tag: "Embedded Wallets & MPC",
       logo: "/privy.png",
       color: "emerald",
-      title: "Privy Embedded Auth",
+      title: "Privy Embedded Smart Auth",
       points: [
-        "Zero-seed-phrase onboarding via hardware passkeys",
-        "Embedded smart wallets with invisible gas funding",
-        "Seamless wallet actions across all family devices",
+        "Zero-seed-phrase onboarding via WebAuthn/FIDO2 hardware secure enclaves",
+        "ERC-4337 smart account infrastructure with automated paymaster gas sponsorship",
+        "Multi-Party Computation (MPC) key sharding eliminating single points of compromise",
+        "Seamless cross-device session keys & biometric signature delegation on PWAs",
       ],
-      highlight: "FIDO2 / Secure Enclave Native",
+      highlight: "FIDO2 Secure Enclave & MPC Sharding",
     },
     {
       name: "World ID",
@@ -39,11 +41,12 @@ export function SecuritySection() {
       color: "purple",
       title: "World ID Selfie Check",
       points: [
-        "Low-friction biometric liveness & anti-abuse checks",
-        "Step-up authorization for high-value family transfers",
-        "Zero biometric data stored—1:1 ZK-SNARK proof only",
+        "Low-friction biometric liveness verification confirming unique human identity",
+        "Step-up cryptographic authorization for high-value family transfers & rule alterations",
+        "Zero biometric data stored or transmitted—verified purely via 1:1 Zero-Knowledge SNARKs",
+        "Smart contract-level sybil resistance & anti-drain guardian enforcement",
       ],
-      highlight: "Privacy-Preserving ZK Proofs",
+      highlight: "1:1 Zero-Knowledge Humanity Proofs",
     },
   ];
 
@@ -51,14 +54,14 @@ export function SecuritySection() {
     <section id="security" className="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full app-surface border border-black/5 dark:border-white/5 mb-4 text-xs font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
-          <span>WEB3 ARCHITECTURE & SPONSOR TECH</span>
+          <span>WEB3 PROTOCOL ARCHITECTURE</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold app-text tracking-tight mb-4">
-          Institutional Security. <br className="hidden sm:block" />
-          Consumer Simplicity.
+          Hardened Web3 Infrastructure. <br className="hidden sm:block" />
+          Zero Single Points of Failure.
         </h2>
         <p className="text-base sm:text-lg app-muted">
-          Transakt eliminates traditional single-point-of-failure vulnerabilities through an integrated Web3 architecture powered by <span className="font-semibold app-text">ENSv2</span>, <span className="font-semibold app-text">Privy</span>, and <span className="font-semibold app-text">World ID</span>.
+          Transakt eliminates custodial risk by coupling hierarchical <span className="font-semibold app-text">ENSv2 registries</span>, <span className="font-semibold app-text">Privy secure enclaves</span>, ERC-4337 paymasters, and <span className="font-semibold app-text">World ID zero-knowledge proofs</span> on ETH Sepolia.
         </p>
       </div>
 

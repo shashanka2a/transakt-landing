@@ -6,35 +6,35 @@ import { Fingerprint, Shield, Clock, KeyRound, ArrowUpRight } from "lucide-react
 const features = [
   {
     icon: Fingerprint,
-    title: "Passkey Native",
-    tag: "FIDO2 / WebAuthn",
+    title: "One-Tap Login",
+    tag: "No Passwords",
     description:
-      "Powered by Privy. Sign in instantly using Apple FaceID, TouchID, or Windows Hello. No browser extensions, no passwords, and zero seed phrases to lose.",
-    highlight: "Zero recovery phrase stress",
+      "Sign in instantly using Face ID or your fingerprint on your phone. No browser extensions, no passwords, and zero seed phrases to write down or lose.",
+    highlight: "Log in just like Apple Pay",
   },
   {
     icon: Shield,
-    title: "Family ENS Identities",
-    tag: "ENS Subnames (CCIP)",
+    title: "Readable Family Names",
+    tag: "Simple Usernames",
     description:
-      "Search and claim your root name.eth. Mint instant gasless subnames (e.g., alex.smithfam.eth) for kids and partners with customized permission scopes.",
-    highlight: "Human-readable addresses",
+      "Replace confusing 42-character crypto addresses with simple names like alex.smithfam.eth. Sending money is as simple as sending a text message.",
+    highlight: "Never copy-paste cryptic addresses",
   },
   {
     icon: Clock,
-    title: "Programmable Allowances",
-    tag: "Smart Contract Limits",
+    title: "Automatic Allowances",
+    tag: "Family Budgeting",
     description:
-      "Automate recurring weekly allowance drops in USDC or ETH. Set daily spending ceilings and toggle DeFi protocol access with a single tap.",
-    highlight: "Automated allowance rails",
+      "Schedule weekly pocket money drops for kids with automatic spending limits. Help your family build healthy financial habits with built-in parental guardrails.",
+    highlight: "Automated pocket money with limits",
   },
   {
     icon: KeyRound,
-    title: "Gasless Relay",
-    tag: "ERC-4337 Account Abstraction",
+    title: "Zero Gas Fees",
+    tag: "100% Free Transfers",
     description:
-      "Every transaction is bundled through paymasters on ETH Sepolia. Your family transacts with zero gas fee confusion or failed nonce errors.",
-    highlight: "100% sponsored gas fees",
+      "Every transaction is completely gas-free for your family. No need to buy native cryptocurrency or calculate network fees just to send money.",
+    highlight: "Zero transaction fee confusion",
   },
 ];
 
@@ -50,7 +50,7 @@ export function Features() {
           Nothing complicated.
         </h2>
         <p className="text-base sm:text-lg app-muted">
-          We combined Passkeys, ERC-4337 Account Abstraction, and ENS to build a modern consumer experience that parents and teenagers can easily use.
+          We removed seed phrases, confusing wallet addresses, and gas fees so your entire family can easily manage money together.
         </p>
       </div>
 
