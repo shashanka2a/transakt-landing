@@ -58,13 +58,13 @@ export function SecuritySection() {
             <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6">
               <Cpu className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold app-text mb-3">Zero-Knowledge Step-Up</h3>
+            <h3 className="text-xl font-bold app-text mb-3">World ID Selfie Check</h3>
             <p className="text-sm app-muted leading-relaxed">
-              Verify transactions exceeding your safety threshold with World ID Orb proofs. Zero biometric data is stored on-chain or off-chain—only a zk-SNARK proof of humanness.
+              Verify transactions exceeding your safety threshold with World ID Selfie Check. Zero biometric data is stored on-chain or off-chain—only a 1:1 zk-SNARK proof of humanness.
             </p>
           </div>
           <div className="mt-6 pt-4 border-t border-black/5 dark:border-white/5 text-xs font-semibold text-purple-600 dark:text-purple-400">
-            Privacy-Preserving ZK-Proofs
+            World ID Selfie Check (ZK)
           </div>
         </div>
       </div>

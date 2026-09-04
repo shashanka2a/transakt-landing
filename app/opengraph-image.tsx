@@ -80,7 +80,7 @@ export default function OGImage() {
               lineHeight: 1.4,
             }}
           >
-            Passkey Native (Privy) • ENS Family Subnames • ZK Step-Up Biometrics • Gasless L2
+            Passkey Native (Privy) • ENS Family Subnames • World ID Selfie Check • Gasless L2
           </div>
         </div>
 

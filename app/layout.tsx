@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Transakt",
   },
   description:
-    "No seed phrases. Claim your family ENS identity, issue gasless subnames, and manage permissions natively with biometric passkeys.",
+    "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
   keywords: [
     "Transakt",
     "Family Crypto",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "ERC-4337",
     "Family Treasury",
     "Gasless Web3",
-    "World ID ZK Auth",
+    "World ID Selfie Check",
     "Base L2",
   ],
   authors: [{ name: "Transakt Team", url: "https://transakt.family" }],
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and manage permissions natively with biometric passkeys.",
+      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
     url: "https://transakt.family",
     siteName: "Transakt",
     locale: "en_US",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and manage permissions natively with biometric passkeys.",
+      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
     creator: "@transakt_eth",
   },
   icons: {

@@ -9,102 +9,61 @@ import {
   Shield,
   Lock,
   Menu,
-  ChevronRight,
   TrendingUp,
   CheckCircle2,
-  Fingerprint,
   Check,
   Zap,
-  ArrowRight,
-  Clock
+  Camera,
+  ShieldCheck
 } from "lucide-react";
-import { TxLogo, EthereumIcon, UniswapIcon } from "./Icons";
+import { TxLogo, EthereumIcon, UniswapIcon, WorldIdIcon } from "./Icons";
 
 interface MockPhoneProps {
   isDark?: boolean;
 }
 
+type TabType = "home" | "send" | "manage" | "activity";
+
+interface PWAStep {
+  id: string;
+  tab: TabType;
+  title: string;
+  island: string;
+}
+
+const PWA_STEPS: PWAStep[] = [
+  { id: "home", tab: "home", title: "1. Family Treasury", island: "⚡ PWA • Base L2" },
+  { id: "send", tab: "send", title: "2. Gasless Send", island: "⛽ $0.00 Gas Relay" },
+  { id: "selfie", tab: "send", title: "3. World ID Selfie Check", island: "🌐 World ID ZK Check" },
+  { id: "activity", tab: "activity", title: "4. Instant L2 Activity", island: "🟢 Confirmed on Base" },
+];
+
 export function MockPhone({ isDark = false }: MockPhoneProps) {
   const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState<"home" | "send" | "manage" | "activity">("home");
-  const [selectedNode, setSelectedNode] = useState<string | null>("alex");
-  
-  // Dynamic action animation cycle state
-  const [animStep, setAnimStep] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [balance, setBalance] = useState("1,420.50");
-  const [isBalanceGlowing, setIsBalanceGlowing] = useState(false);
-  const [showFaceIdHUD, setShowFaceIdHUD] = useState(false);
-  const [liveNotification, setLiveNotification] = useState<{
-    title: string;
-    sub: string;
-    type: "allowance" | "passkey" | "tx";
-  } | null>({
-    title: "Allowance Received",
-    sub: "+$50.00 USDC to alex.smithfam",
-    type: "allowance",
-  });
+  const [stepIndex, setStepIndex] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Automated action loop when not manually interacting
+  // Automated continuous PWA flow loop (Non-clickable tabs / automated demo)
   useEffect(() => {
-    if (!mounted || isPaused) return;
+    if (!mounted) return;
 
     const interval = setInterval(() => {
-      setAnimStep((prev) => {
-        const next = (prev + 1) % 3;
-
-        if (next === 0) {
-          // Action 0: Allowance & Balance bump
-          setBalance("1,470.50");
-          setIsBalanceGlowing(true);
-          setShowFaceIdHUD(false);
-          setLiveNotification({
-            title: "Allowance Dispatched",
-            sub: "+$50.00 USDC auto-credited (alex.smithfam)",
-            type: "allowance",
-          });
-          setTimeout(() => setIsBalanceGlowing(false), 1800);
-        } else if (next === 1) {
-          // Action 1: Biometric FaceID Passkey Scan
-          setShowFaceIdHUD(true);
-          setLiveNotification({
-            title: "Passkey Biometrics Verified",
-            sub: "Hardware Enclave Signed • $0.00 Gas",
-            type: "passkey",
-          });
-          setTimeout(() => {
-            setShowFaceIdHUD(false);
-          }, 2400);
-        } else if (next === 2) {
-          // Action 2: Transaction Relay
-          setShowFaceIdHUD(false);
-          setLiveNotification({
-            title: "Batched Transaction Relayed",
-            sub: "Base L2 • Instant Finality",
-            type: "tx",
-          });
-          setBalance("1,420.50");
-        }
-
-        return next;
-      });
-    }, 4000);
+      setStepIndex((prev) => (prev + 1) % PWA_STEPS.length);
+    }, 3800);
 
     return () => clearInterval(interval);
-  }, [mounted, isPaused]);
+  }, [mounted]);
+
+  const currentStep = PWA_STEPS[stepIndex];
+  const activeTab = currentStep.tab;
 
   return (
-    <div
-      className="relative w-full max-w-[340px] sm:max-w-[380px] select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className="relative w-full max-w-[340px] sm:max-w-[380px] select-none pointer-events-none">
       {/* Floating Status HUD Pill 1: Top-Right */}
-      <div className="absolute -top-6 -right-4 sm:-right-8 z-30 animate-float pointer-events-none hidden xs:flex items-center space-x-2 px-3.5 py-1.5 rounded-full app-surface border border-black/10 dark:border-white/10 shadow-lg backdrop-blur-md">
+      <div className="absolute -top-6 -right-4 sm:-right-8 z-30 animate-float hidden xs:flex items-center space-x-2 px-3.5 py-1.5 rounded-full app-surface border border-black/10 dark:border-white/10 shadow-lg backdrop-blur-md">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -113,9 +72,9 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
       </div>
 
       {/* Floating Status HUD Pill 2: Bottom-Left */}
-      <div className="absolute -bottom-6 -left-4 sm:-left-8 z-30 animate-float-delayed pointer-events-none hidden xs:flex items-center space-x-2 px-3.5 py-1.5 rounded-full app-surface border border-black/10 dark:border-white/10 shadow-lg backdrop-blur-md">
-        <Fingerprint className="w-3.5 h-3.5 text-emerald-500" />
-        <span className="text-[11px] font-bold app-text tracking-tight">Passkey Biometrics Active</span>
+      <div className="absolute -bottom-6 -left-4 sm:-left-8 z-30 animate-float-delayed hidden xs:flex items-center space-x-2 px-3.5 py-1.5 rounded-full app-surface border border-black/10 dark:border-white/10 shadow-lg backdrop-blur-md">
+        <WorldIdIcon className="w-4 h-4 text-emerald-500" />
+        <span className="text-[11px] font-bold app-text tracking-tight">World ID Selfie Check Active</span>
       </div>
 
       {/* Phone Shell */}
@@ -128,52 +87,43 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
         }
         flex flex-col font-sans`}
       >
+        {/* PWA Flow Step Indicator Bar at very top */}
+        <div className="absolute top-1 inset-x-8 z-50 flex space-x-1.5 pt-1">
+          {PWA_STEPS.map((step, idx) => (
+            <div
+              key={step.id}
+              className="h-1 flex-1 rounded-full bg-black/15 dark:bg-white/20 overflow-hidden"
+            >
+              <div
+                className={`h-full bg-emerald-500 transition-all duration-500 ${
+                  idx === stepIndex
+                    ? "w-full"
+                    : idx < stepIndex
+                    ? "w-full opacity-60"
+                    : "w-0"
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Dynamic Island / Active Notification Notch */}
-        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-40 transition-all duration-300">
+        <div className="absolute top-3.5 left-1/2 -translate-x-1/2 z-40 transition-all duration-300">
           <div className="h-6 px-3 bg-black text-white rounded-full flex items-center justify-between space-x-2 shadow-md">
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
             <span className="text-[9px] font-bold tracking-tight text-neutral-200">
-              {animStep === 0 && "⚡ Auto-Allowance"}
-              {animStep === 1 && "🛡️ FaceID Verified"}
-              {animStep === 2 && "🟢 Paymaster L2"}
+              {currentStep.island}
             </span>
           </div>
         </div>
-
-        {/* Live Notification Dropdown Banner */}
-        {liveNotification && (
-          <div
-            className={`absolute top-10 inset-x-3 z-30 app-surface rounded-2xl p-2.5 border border-black/10 dark:border-white/10 shadow-xl transition-all duration-500 transform ${
-              mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                  {liveNotification.type === "allowance" && <TrendingUp className="w-3.5 h-3.5" />}
-                  {liveNotification.type === "passkey" && <Fingerprint className="w-3.5 h-3.5" />}
-                  {liveNotification.type === "tx" && <CheckCircle2 className="w-3.5 h-3.5" />}
-                </div>
-                <div className="text-left overflow-hidden">
-                  <p className="text-[10px] font-bold app-text truncate leading-tight">
-                    {liveNotification.title}
-                  </p>
-                  <p className="text-[9px] app-muted truncate leading-tight">
-                    {liveNotification.sub}
-                  </p>
-                </div>
-              </div>
-              <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 app-muted shrink-0">
-                NOW
-              </span>
-            </div>
-          </div>
-        )}
 
         {/* Status Bar */}
         <div className="absolute top-0 w-full h-8 flex justify-between items-center px-6 z-20 text-[11px] font-medium app-text opacity-75 pt-3">
           <span>9:41</span>
           <div className="flex space-x-1.5 items-center">
+            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+              PWA
+            </span>
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
             </svg>
@@ -183,43 +133,60 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           </div>
         </div>
 
-        {/* Biometric Passkey FaceID Scan Overlay Animation */}
-        {showFaceIdHUD && (
-          <div className="absolute inset-0 z-50 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center animate-count-up">
-            <div className="relative w-20 h-20 mb-4 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-3xl border-2 border-emerald-400 animate-biometric-pulse"></div>
-              <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                <Fingerprint className="w-8 h-8" />
+        {/* World ID Selfie Check Overlay Animation (Step 2: Selfie Check) */}
+        {stepIndex === 2 && (
+          <div className="absolute inset-0 z-50 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center animate-count-up">
+            {/* World ID Selfie Oval Scanner Frame */}
+            <div className="relative w-28 h-36 rounded-[2.5rem] border-2 border-emerald-400/80 p-2 flex flex-col items-center justify-center mb-4 overflow-hidden shadow-[0_0_25px_rgba(0,255,135,0.25)]">
+              {/* Animated Scan Line */}
+              <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-biometric-pulse"></div>
+              
+              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
+                <WorldIdIcon className="w-8 h-8" />
               </div>
+              <span className="text-[9px] font-bold text-emerald-400 tracking-wider uppercase">
+                Align Face
+              </span>
             </div>
-            <h4 className="text-white font-extrabold text-sm tracking-tight mb-1">
-              Biometric Authorization
+
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold mb-2">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>World ID Selfie Check</span>
+            </div>
+
+            <h4 className="text-white font-black text-sm tracking-tight mb-1">
+              1:1 ZK Proof Verified
             </h4>
-            <p className="text-neutral-300 text-xs font-medium">
-              Signed with TouchID / FaceID
+            <p className="text-neutral-300 text-[10px] font-medium max-w-[210px] leading-relaxed mb-3">
+              Unique human authorization confirmed without storing any biometric data.
             </p>
-            <div className="mt-3 inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Zero Seed Phrase Needed</span>
+
+            <div className="px-3 py-1 rounded-lg bg-white/10 text-white/90 text-[9px] font-bold flex items-center space-x-1">
+              <Check className="w-3 h-3 text-emerald-400 stroke-[3]" />
+              <span>Zero-Knowledge Proof Signed</span>
             </div>
           </div>
         )}
 
         {/* Header */}
-        <div className="px-5 pt-20 pb-2 flex justify-between items-center z-10">
+        <div className="px-5 pt-14 pb-2 flex justify-between items-center z-10">
           <div className="flex items-center space-x-2">
             <div className="w-7 h-7 rounded-lg app-accent-bg flex items-center justify-center shadow-xs">
               <TxLogo className="w-4 h-4" />
             </div>
-            <span className="font-bold text-sm tracking-tight app-text">smithfam.eth</span>
+            <div className="flex flex-col text-left">
+              <span className="font-bold text-sm tracking-tight app-text leading-tight">smithfam.eth</span>
+              <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">PWA • Mainnet/Base</span>
+            </div>
           </div>
-          <div className="w-8 h-8 rounded-full app-surface flex items-center justify-center cursor-pointer shadow-xs hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-full app-surface flex items-center justify-center shadow-xs">
             <Menu className="w-4 h-4 app-text" />
           </div>
         </div>
 
-        {/* Main Content Area based on activeTab */}
-        <div className="flex-1 overflow-y-auto no-scrollbar pb-20 px-1">
+        {/* Main Content Area based on Step */}
+        <div className="flex-1 overflow-y-auto no-scrollbar pb-18 px-1">
+          {/* STEP 1: HOME OVERVIEW */}
           {activeTab === "home" && (
             <>
               {/* Balance Hero */}
@@ -231,17 +198,10 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   <span className="text-2xl font-medium app-muted mt-2">$</span>
                   <span
                     className={`text-[2.6rem] font-black tracking-tight app-text transition-all duration-500 ${
-                      isBalanceGlowing
-                        ? "text-emerald-500 scale-105"
-                        : mounted
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-95"
+                      stepIndex === 0 ? "text-emerald-500 scale-102" : ""
                     }`}
                   >
-                    {balance.split(".")[0]}
-                    <span className="app-muted text-3xl font-semibold">
-                      .{balance.split(".")[1]}
-                    </span>
+                    1,470<span className="app-muted text-3xl font-semibold">.50</span>
                   </span>
                 </div>
                 <div className="mt-2 flex items-center space-x-2 app-surface px-3 py-1 rounded-full border border-black/5 dark:border-white/5 shadow-xs">
@@ -253,26 +213,25 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                 </div>
               </div>
 
-              {/* Quick Actions */}
+              {/* Quick Actions (Demonstration Icons) */}
               <div className="px-4 grid grid-cols-4 gap-2.5 my-3">
                 {[
-                  { icon: Send, label: "Send", tab: "send" as const },
-                  { icon: Download, label: "Request", tab: "send" as const },
-                  { icon: Users, label: "Manage", tab: "manage" as const },
-                  { icon: RefreshCw, label: "Swap", tab: "activity" as const },
+                  { icon: Send, label: "Send" },
+                  { icon: Download, label: "Request" },
+                  { icon: Users, label: "Manage" },
+                  { icon: RefreshCw, label: "Swap" },
                 ].map((action, i) => (
-                  <button
+                  <div
                     key={i}
-                    onClick={() => setActiveTab(action.tab)}
-                    className="flex flex-col items-center justify-center space-y-1 group transition-all"
+                    className="flex flex-col items-center justify-center space-y-1 group"
                   >
-                    <div className="w-11 h-11 rounded-2xl app-surface flex items-center justify-center shadow-sm group-hover:scale-110 active:scale-95 transition-transform border border-black/5 dark:border-white/5">
-                      <action.icon className="w-4 h-4 app-text group-hover:app-accent transition-colors" />
+                    <div className="w-11 h-11 rounded-2xl app-surface flex items-center justify-center shadow-sm border border-black/5 dark:border-white/5">
+                      <action.icon className="w-4 h-4 app-text" />
                     </div>
-                    <span className="text-[10px] font-semibold app-muted group-hover:app-text transition-colors">
+                    <span className="text-[10px] font-semibold app-muted">
                       {action.label}
                     </span>
-                  </button>
+                  </div>
                 ))}
               </div>
 
@@ -286,12 +245,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                 </div>
                 <div className="flex space-x-3 overflow-x-auto no-scrollbar pr-4 pb-1">
                   {/* Node 1: Alex */}
-                  <div
-                    onClick={() => setSelectedNode(selectedNode === "alex" ? null : "alex")}
-                    className={`min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-md ${
-                      selectedNode === "alex" ? "ring-2 ring-emerald-500" : ""
-                    }`}
-                  >
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden ring-2 ring-emerald-500">
                     <div className="absolute top-0 left-0 w-1.5 h-full bg-emerald-500"></div>
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 flex items-center justify-center font-bold text-xs">
@@ -309,7 +263,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                         className="bg-emerald-500 h-1.5 rounded-full"
                         style={{
                           width: mounted ? "65%" : "0%",
-                          transition: "width 1s ease-out 0.5s",
+                          transition: "width 1s ease-out",
                         }}
                       ></div>
                     </div>
@@ -320,12 +274,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   </div>
 
                   {/* Node 2: Mom */}
-                  <div
-                    onClick={() => setSelectedNode(selectedNode === "mom" ? null : "mom")}
-                    className={`min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-md ${
-                      selectedNode === "mom" ? "ring-2 ring-blue-500" : ""
-                    }`}
-                  >
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-500"></div>
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 flex items-center justify-center font-bold text-xs">
@@ -342,17 +291,12 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                     </div>
                     <div className="flex justify-between text-[8px] app-muted font-medium">
                       <span>Full Access</span>
-                      <span>2FA Biometric</span>
+                      <span>World ID Guard</span>
                     </div>
                   </div>
 
                   {/* Node 3: Vault */}
-                  <div
-                    onClick={() => setSelectedNode(selectedNode === "vault" ? null : "vault")}
-                    className={`min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden cursor-pointer transition-all duration-300 opacity-80 hover:opacity-100 ${
-                      selectedNode === "vault" ? "ring-2 ring-amber-500" : ""
-                    }`}
-                  >
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden opacity-80">
                     <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500"></div>
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-300 flex items-center justify-center font-bold text-xs">
@@ -365,13 +309,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                     <p className="text-xs font-bold app-text truncate w-full mb-0.5">vault.smithfam</p>
                     <p className="text-[10px] app-muted mb-1.5 font-medium">College Savings</p>
                     <div className="w-full bg-black/5 dark:bg-white/10 rounded-full h-1.5 mb-1 overflow-hidden">
-                      <div
-                        className="bg-amber-500 h-1.5 rounded-full"
-                        style={{
-                          width: mounted ? "85%" : "0%",
-                          transition: "width 1s ease-out 0.5s",
-                        }}
-                      ></div>
+                      <div className="bg-amber-500 h-1.5 rounded-full w-[85%]"></div>
                     </div>
                     <div className="flex justify-between text-[8px] app-muted font-medium">
                       <span>$12,400 locked</span>
@@ -381,68 +319,32 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                 </div>
               </div>
 
-              {/* Recent Activity */}
+              {/* Live Dropped Inflow Notification */}
               <div className="px-4 mb-2">
-                <div className="flex justify-between items-center mb-2.5">
-                  <h3 className="text-xs font-bold app-text uppercase tracking-wider">Recent Activity</h3>
-                  <button
-                    onClick={() => setActiveTab("activity")}
-                    className="text-[10px] font-semibold app-accent hover:underline"
-                  >
-                    View All
-                  </button>
-                </div>
-
-                <div className="space-y-2">
-                  {/* Tx 1 */}
-                  <div className="app-surface p-2 rounded-xl flex items-center justify-between border border-black/5 dark:border-white/5">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center relative">
-                        <Send className="w-3.5 h-3.5" />
-                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white dark:bg-black rounded-full flex items-center justify-center border border-gray-200 dark:border-gray-800">
-                          <Check className="w-2 h-2 text-emerald-500 stroke-[3]" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold app-text">Allowance to alex</p>
-                        <p className="text-[9px] app-muted">Today, 10:24 AM</p>
-                      </div>
+                <div className="app-surface p-2.5 rounded-xl flex items-center justify-between border border-emerald-500/30 bg-emerald-500/5">
+                  <div className="flex items-center space-x-2.5">
+                    <div className="w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center">
+                      <Send className="w-3.5 h-3.5" />
                     </div>
-                    <div className="text-right">
-                      <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">+$50.00 USDC</p>
-                      <p className="text-[9px] app-muted">Gasless Relay</p>
+                    <div className="text-left">
+                      <p className="text-xs font-bold app-text">Allowance Dropped</p>
+                      <p className="text-[9px] app-muted">+$50.00 USDC to alex</p>
                     </div>
                   </div>
-
-                  {/* Tx 2 */}
-                  <div className="app-surface p-2 rounded-xl flex items-center justify-between border border-black/5 dark:border-white/5">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950/40 flex items-center justify-center relative">
-                        <UniswapIcon className="w-3.5 h-3.5" />
-                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white dark:bg-black rounded-full flex items-center justify-center border border-gray-200 dark:border-gray-800">
-                          <RefreshCw className="w-2 h-2 text-gray-500" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold app-text">Swap USDC for ETH</p>
-                        <p className="text-[9px] app-muted">Yesterday, 4:30 PM</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs font-bold app-text">+0.15 ETH</p>
-                      <p className="text-[9px] app-muted">Uniswap V3</p>
-                    </div>
-                  </div>
+                  <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                    Gasless (Base)
+                  </span>
                 </div>
               </div>
             </>
           )}
 
+          {/* STEP 2 & 3: GASLESS SEND & WORLD ID CHECK */}
           {activeTab === "send" && (
-            <div className="p-4 space-y-3">
-              <h3 className="text-sm font-bold app-text">Instant Gasless Send</h3>
-              <div className="app-surface p-4 rounded-2xl border border-black/5 dark:border-white/5 space-y-3">
-                <label className="text-[10px] font-bold app-muted uppercase">Recipient ENS Subname</label>
+            <div className="p-4 space-y-3 animate-count-up">
+              <h3 className="text-sm font-bold app-text text-left">Instant Gasless Send (PWA)</h3>
+              <div className="app-surface p-4 rounded-2xl border border-black/5 dark:border-white/5 space-y-3 text-left">
+                <label className="text-[10px] font-bold app-muted uppercase">Recipient Subname</label>
                 <div className="flex items-center bg-black/5 dark:bg-white/5 p-2.5 rounded-xl">
                   <input
                     type="text"
@@ -458,110 +360,108 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   <Zap className="w-3 h-3" />
                   <span>Network fee: $0.00 (Sponsored by Paymaster)</span>
                 </div>
-                <button
-                  onClick={() => {
-                    setShowFaceIdHUD(true);
-                    setTimeout(() => {
-                      setShowFaceIdHUD(false);
-                      setActiveTab("home");
-                    }, 1800);
-                  }}
-                  className="w-full py-3 app-accent-bg rounded-xl font-bold text-xs mt-2 flex items-center justify-center space-x-1.5 shadow-md active:scale-98 transition-all"
-                >
-                  <Fingerprint className="w-4 h-4" />
-                  <span>Sign with FaceID Passkey</span>
-                </button>
-              </div>
-            </div>
-          )}
-
-          {activeTab === "manage" && (
-            <div className="p-4 space-y-3">
-              <h3 className="text-sm font-bold app-text">Family Permissions</h3>
-              <div className="app-surface p-3 rounded-2xl border border-black/5 dark:border-white/5 space-y-2.5">
-                <div className="flex justify-between items-center text-xs font-semibold app-text">
-                  <span>Daily Spend Ceiling</span>
-                  <span className="app-accent font-bold">$100 / day</span>
-                </div>
-                <div className="flex justify-between items-center text-xs font-semibold app-text">
-                  <span>DeFi Protocol Access</span>
-                  <span className="text-emerald-500 font-bold">Enabled</span>
-                </div>
-                <div className="flex justify-between items-center text-xs font-semibold app-text">
-                  <span>Social Guardian Quorum</span>
-                  <span className="font-bold">2 of 3</span>
+                
+                {/* Step button highlight */}
+                <div className="w-full py-3 app-accent-bg rounded-xl font-bold text-xs mt-2 flex items-center justify-center space-x-2 shadow-md">
+                  <WorldIdIcon className="w-4 h-4" />
+                  <span>Authorizing with World ID Selfie Check...</span>
                 </div>
               </div>
             </div>
           )}
 
+          {/* STEP 4: ONCHAIN ACTIVITY */}
           {activeTab === "activity" && (
-            <div className="p-4 space-y-3">
-              <h3 className="text-sm font-bold app-text">Onchain History</h3>
-              <div className="app-surface p-3 rounded-xl text-xs space-y-2.5 border border-black/5 dark:border-white/5">
-                <div className="flex justify-between font-semibold app-text">
-                  <span>Weekly Allowance Drop</span>
-                  <span className="text-emerald-500 font-bold">+$50.00 USDC</span>
+            <div className="p-4 space-y-3 animate-count-up text-left">
+              <div className="flex justify-between items-center">
+                <h3 className="text-sm font-bold app-text">Onchain History (Base L2)</h3>
+                <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                  Live Finality
+                </span>
+              </div>
+              <div className="app-surface p-3 rounded-2xl text-xs space-y-2.5 border border-black/5 dark:border-white/5">
+                <div className="flex justify-between items-center pb-2 border-b border-black/5 dark:border-white/5">
+                  <div>
+                    <p className="font-bold app-text">Sent to alex.smithfam</p>
+                    <p className="text-[9px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center space-x-1">
+                      <WorldIdIcon className="w-2.5 h-2.5" />
+                      <span>World ID Selfie Check • Verified</span>
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold app-text">-$25.00 USDC</p>
+                    <p className="text-[9px] app-muted">0.00 Gas</p>
+                  </div>
                 </div>
-                <div className="flex justify-between font-semibold app-text">
-                  <span>Uniswap V3 Swap</span>
-                  <span className="text-emerald-500 font-bold">+0.15 ETH</span>
+
+                <div className="flex justify-between items-center pb-2 border-b border-black/5 dark:border-white/5">
+                  <div>
+                    <p className="font-bold app-text">Weekly Auto-Allowance</p>
+                    <p className="text-[9px] app-muted">Smart Contract Relay</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">+$50.00 USDC</p>
+                    <p className="text-[9px] app-muted">Completed</p>
+                  </div>
                 </div>
-                <div className="flex justify-between font-semibold app-text">
-                  <span>Subname Minted (alex)</span>
-                  <span className="text-blue-500 font-bold">Gasless L2</span>
+
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="font-bold app-text">Uniswap V3 Swap</p>
+                    <p className="text-[9px] app-muted">0.08 ETH for 250 USDC</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">+0.15 ETH</p>
+                    <p className="text-[9px] app-muted">Base L2</p>
+                  </div>
                 </div>
               </div>
             </div>
           )}
         </div>
 
-        {/* Bottom Nav Bar */}
-        <div className="absolute bottom-0 w-full h-16 app-surface border-t border-black/5 dark:border-white/5 rounded-b-[2.5rem] flex justify-around items-center px-4 py-2 z-20 shadow-lg">
-          <button
-            onClick={() => setActiveTab("home")}
+        {/* Bottom Nav Bar (Active tab tracks PWA flow loop, non-clickable) */}
+        <div className="absolute bottom-0 w-full h-15 app-surface border-t border-black/5 dark:border-white/5 rounded-b-[2.5rem] flex justify-around items-center px-4 py-1.5 z-20 shadow-lg">
+          <div
             className={`flex flex-col items-center space-y-0.5 transition-all ${
-              activeTab === "home" ? "app-accent font-bold scale-105" : "app-muted"
+              activeTab === "home" ? "app-accent font-bold scale-105" : "app-muted opacity-60"
             }`}
           >
             <div className="p-0.5">
               <Shield className="w-4 h-4" />
             </div>
             <span className="text-[9px]">Home</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("send")}
+          </div>
+          <div
             className={`flex flex-col items-center space-y-0.5 transition-all ${
-              activeTab === "send" ? "app-accent font-bold scale-105" : "app-muted"
+              activeTab === "send" ? "app-accent font-bold scale-105" : "app-muted opacity-60"
             }`}
           >
             <div className="p-0.5">
               <Send className="w-4 h-4" />
             </div>
             <span className="text-[9px]">Send</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("manage")}
+          </div>
+          <div
             className={`flex flex-col items-center space-y-0.5 transition-all ${
-              activeTab === "manage" ? "app-accent font-bold scale-105" : "app-muted"
+              activeTab === "manage" ? "app-accent font-bold scale-105" : "app-muted opacity-60"
             }`}
           >
             <div className="p-0.5">
               <Users className="w-4 h-4" />
             </div>
             <span className="text-[9px]">Manage</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("activity")}
+          </div>
+          <div
             className={`flex flex-col items-center space-y-0.5 transition-all ${
-              activeTab === "activity" ? "app-accent font-bold scale-105" : "app-muted"
+              activeTab === "activity" ? "app-accent font-bold scale-105" : "app-muted opacity-60"
             }`}
           >
             <div className="p-0.5">
               <RefreshCw className="w-4 h-4" />
             </div>
             <span className="text-[9px]">Activity</span>
-          </button>
+          </div>
         </div>
       </div>
     </div>

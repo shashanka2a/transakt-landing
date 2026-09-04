@@ -33,7 +33,7 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg lg:text-xl app-muted max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed font-normal">
-            No seed phrases. Claim your family ENS identity, issue gasless subnames, and manage permissions natively with biometric passkeys.
+            No seed phrases. Claim your family ENS identity, issue gasless subnames, and authorize transfers securely with World ID Selfie Check.
           </p>
 
           {/* Action Buttons */}
@@ -66,7 +66,7 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
             </div>
             <div className="flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 app-accent" />
-              <span>FIDO2 Passkeys</span>
+              <span>World ID Selfie Check</span>
             </div>
           </div>
         </div>
