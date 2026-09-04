@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, CheckCircle2, ArrowRight, Sparkles, Shield, Mail } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Shield, Mail } from "lucide-react";
 import { TxLogo } from "./Icons";
 
 interface EarlyAccessModalProps {

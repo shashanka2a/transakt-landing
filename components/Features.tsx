@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Fingerprint, Shield, Zap, KeyRound, Clock, Users, ArrowUpRight } from "lucide-react";
+import { Fingerprint, Shield, Clock, KeyRound, ArrowUpRight } from "lucide-react";
 
 const features = [
   {
@@ -19,22 +19,6 @@ const features = [
     description:
       "Search and claim your root name.eth. Mint instant gasless subnames (e.g., alex.smithfam.eth) for kids and partners with customized permission scopes.",
     highlight: "Human-readable addresses",
-  },
-  {
-    icon: Zap,
-    title: "ZK Step-Up Auth",
-    tag: "World ID Proofs",
-    description:
-      "High-value transactions trigger an optional World ID zero-knowledge biometric verification. Proves unique human authority without revealing biometric data.",
-    highlight: "Cryptographic presence proof",
-  },
-  {
-    icon: Users,
-    title: "Guardian Multi-Sig",
-    tag: "Social Recovery",
-    description:
-      "If a device is lost, designated family guardians can securely recover the account with a 2-of-3 quorum. Never get locked out of your treasury.",
-    highlight: "Decentralized safety net",
   },
   {
     icon: Clock,
@@ -58,7 +42,7 @@ export function Features() {
   return (
     <section id="features" className="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full app-surface border border-black/5 dark:border-white/5 mb-4 text-xs font-bold tracking-wider app-accent">
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full app-surface border border-black/5 dark:border-white/5 mb-4 text-xs font-bold tracking-wider app-accent">
           <span>DESIGNED FOR FAMILIES</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold app-text tracking-tight mb-4">
@@ -66,26 +50,26 @@ export function Features() {
           Nothing complicated.
         </h2>
         <p className="text-base sm:text-lg app-muted">
-          We combined Passkeys, ERC-4337 Account Abstraction, and ENS to build a modern consumer experience that grandma and teenagers can easily use.
+          We combined Passkeys, ERC-4337 Account Abstraction, and ENS to build a modern consumer experience that parents and teenagers can easily use.
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 4 Cards in 2x2 Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className="app-surface p-7 sm:p-8 rounded-3xl group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-black/5 dark:border-white/5 relative overflow-hidden"
+            className="app-surface p-7 sm:p-9 rounded-3xl group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-black/5 dark:border-white/5 relative overflow-hidden"
           >
             {/* Corner accent glow on hover */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 group-hover:bg-emerald-500/10 rounded-bl-full transition-colors duration-500 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 group-hover:bg-emerald-500/10 rounded-bl-full transition-colors duration-500 pointer-events-none"></div>
 
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform shadow-xs">
                   <feature.icon className="w-7 h-7 app-accent" />
                 </div>
-                <span className="text-[10px] font-bold px-2.5 py-1 rounded-md bg-black/5 dark:bg-white/5 app-muted">
+                <span className="text-[11px] font-bold px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 app-muted">
                   {feature.tag}
                 </span>
               </div>

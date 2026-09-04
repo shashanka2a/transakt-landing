@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Smartphone, BookOpen, CheckCircle2, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
+import { Smartphone, BookOpen, CheckCircle2, ShieldCheck } from "lucide-react";
 import { MockPhone } from "./MockPhone";
 import { useTheme } from "next-themes";
 
@@ -21,18 +21,9 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
 
   return (
     <section className="pt-28 sm:pt-36 pb-20 md:pb-28 px-4 sm:px-6 max-w-7xl mx-auto overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-12">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-14">
         {/* Left Hero Content */}
-        <div className="flex-1 text-center lg:text-left pt-4 lg:pt-0">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full app-surface border border-black/5 dark:border-white/5 mb-8 shadow-sm backdrop-blur-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-bold tracking-wider app-text">ONBOARDING V1.0 • BASE & MAINNET</span>
-          </div>
-
+        <div className="flex-1 text-center lg:text-left pt-2 lg:pt-0">
           {/* Heading */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight app-text leading-[1.08] mb-6">
             Crypto for the <br className="hidden sm:block" />
@@ -80,10 +71,10 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
           </div>
         </div>
 
-        {/* Right Phone Mockup */}
-        <div className="flex-1 w-full flex justify-center lg:justify-end relative">
-          {/* Subtle background glow */}
-          <div className="absolute -top-10 right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-10 w-72 h-72 bg-emerald-500/10 dark:bg-emerald-400/15 blur-3xl rounded-full pointer-events-none"></div>
+        {/* Right Dynamic Animated Phone Mockup */}
+        <div className="flex-1 w-full flex justify-center lg:justify-end relative py-4">
+          {/* Ambient Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/15 dark:bg-emerald-400/20 blur-3xl rounded-full pointer-events-none"></div>
           <MockPhone isDark={isDark} />
         </div>
       </div>

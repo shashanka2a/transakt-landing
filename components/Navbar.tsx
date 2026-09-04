@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon, ArrowRight, Menu, X, Shield, Sparkles } from "lucide-react";
+import { Sun, Moon, ArrowRight, Menu, X, Shield } from "lucide-react";
 import { TxLogo } from "./Icons";
 
 interface NavbarProps {

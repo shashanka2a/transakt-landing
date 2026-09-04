@@ -8,7 +8,7 @@ import { SubnameDeepDive } from "@/components/SubnameDeepDive";
 import { SecuritySection } from "@/components/SecuritySection";
 import { Footer } from "@/components/Footer";
 import { EarlyAccessModal } from "@/components/EarlyAccessModal";
-import { Smartphone, Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
@@ -39,8 +39,8 @@ export default function Home() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 dark:bg-emerald-400/10 blur-3xl rounded-full pointer-events-none"></div>
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-xs tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-xs tracking-wider">
+                <ShieldCheck className="w-4 h-4" />
                 <span>EXPERIENCE THE FUTURE OF FAMILY WEALTH</span>
               </div>
 

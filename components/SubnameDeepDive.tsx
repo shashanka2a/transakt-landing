@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Users, CheckCircle2, ChevronRight, Lock, Unlock, Sparkles, Send, Check } from "lucide-react";
+import { Users, CheckCircle2, ChevronRight, Lock, Unlock, Send, Check } from "lucide-react";
 
 export function SubnameDeepDive() {
   const [subname, setSubname] = useState("alex");
@@ -78,7 +78,7 @@ export function SubnameDeepDive() {
             {/* Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-black/5 dark:border-white/5">
               <div className="flex items-center space-x-2">
-                <Sparkles className="w-5 h-5 text-emerald-500" />
+                <Users className="w-5 h-5 text-emerald-500" />
                 <h4 className="font-bold app-text text-base">Mint Family Subname</h4>
               </div>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
