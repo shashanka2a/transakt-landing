@@ -80,7 +80,7 @@ export default function OGImage() {
               lineHeight: 1.4,
             }}
           >
-            Privy Smart Auth • ENS Family Subnames • World ID Selfie Check • ETH Sepolia
+            Privy Smart Auth • ENSv2 • World ID Selfie Check • ETH Sepolia
           </div>
         </div>
 

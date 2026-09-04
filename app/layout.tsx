@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Transakt",
   },
   description:
-    "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
+    "Claim your family ENS identity, issue custom subnames, and set custom spending rules and permissions.",
   keywords: [
     "Transakt",
     "Family Crypto",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
+      "Claim your family ENS identity, issue custom subnames, and set custom spending rules and permissions.",
     url: "https://transakt.family",
     siteName: "Transakt",
     locale: "en_US",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
+      "Claim your family ENS identity, issue custom subnames, and set custom spending rules and permissions.",
     creator: "@transakt_eth",
   },
   icons: {

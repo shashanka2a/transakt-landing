@@ -9,7 +9,7 @@ const features = [
     title: "Frictionless Login",
     tag: "Seamless Onboarding",
     description:
-      "Sign up with your email or social account in seconds. Powered by Privy, your secure smart account is generated automatically under the hood with zero complex setup.",
+      "Sign up with your email or social account in seconds. Powered by Privy, your account is generated automatically under the hood with zero complex setup.",
     highlight: "One-tap email & social onboarding",
   },
   {
