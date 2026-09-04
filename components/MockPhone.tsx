@@ -86,18 +86,15 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
         flex flex-col font-sans`}
       >
         {/* Clean Dynamic Island Hardware Notch (No text inside) */}
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-40 w-24 h-4 bg-black rounded-full flex items-center justify-end px-2.5 shadow-sm">
+        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-40 w-24 h-4 bg-black rounded-full flex items-center justify-end px-2.5 shadow-sm pointer-events-none">
           <div className="w-1.5 h-1.5 rounded-full bg-neutral-900 border border-neutral-800"></div>
           <div className="w-1 h-1 rounded-full bg-neutral-800/80 ml-1.5"></div>
         </div>
 
         {/* Status Bar */}
-        <div className="absolute top-0 w-full h-8 flex justify-between items-center px-6 z-20 text-[11px] font-medium app-text opacity-75 pt-3.5">
+        <div className="absolute top-0 w-full h-8 flex justify-between items-center px-6 z-20 text-[11px] font-medium app-text opacity-75 pt-2.5 pointer-events-none">
           <span>9:41</span>
           <div className="flex space-x-1.5 items-center">
-            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
-              PWA
-            </span>
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
             </svg>
@@ -142,9 +139,9 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           </div>
         )}
 
-        {/* Header */}
-        <div className="px-5 pt-13 pb-2 flex justify-between items-center z-10">
-          <div className="flex items-center space-x-2">
+        {/* App Header (Clearly below notch with proper top padding) */}
+        <div className="px-5 pt-11 pb-2.5 flex justify-between items-center z-10 border-b border-black/5 dark:border-white/5">
+          <div className="flex items-center space-x-2.5">
             <div className="w-7 h-7 rounded-lg app-accent-bg flex items-center justify-center shadow-xs">
               <TxLogo className="w-4 h-4" />
             </div>
@@ -153,13 +150,13 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
               <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">PWA • ETH Sepolia</span>
             </div>
           </div>
-          <div className="w-8 h-8 rounded-full app-surface flex items-center justify-center shadow-xs">
-            <Menu className="w-4 h-4 app-text" />
+          <div className="w-7 h-7 rounded-full app-surface flex items-center justify-center shadow-xs">
+            <Menu className="w-3.5 h-3.5 app-text" />
           </div>
         </div>
 
         {/* Main Content Area based on Step */}
-        <div className="flex-1 overflow-y-auto no-scrollbar pb-18 px-1">
+        <div className="flex-1 overflow-y-auto no-scrollbar pb-18 px-1 pt-1">
           {/* STEP 1: HOME OVERVIEW */}
           {activeTab === "home" && (
             <div className="animate-count-up">
