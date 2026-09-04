@@ -19,10 +19,6 @@ export function Footer() {
           <p className="text-sm app-muted max-w-xs leading-relaxed">
             The next-generation non-custodial family treasury and ENS identity portal for the decentralized web.
           </p>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>All Systems Operational (ETH Sepolia)</span>
-          </div>
         </div>
 
         {/* Product */}
@@ -97,16 +93,6 @@ export function Footer() {
             </li>
             <li>
               <a
-                href="https://discord.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:app-text transition-colors"
-              >
-                Discord
-              </a>
-            </li>
-            <li>
-              <a
                 href="https://github.com"
                 target="_blank"
                 rel="noreferrer"
@@ -126,7 +112,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="pt-8 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium app-muted">
-        <div>© {new Date().getFullYear()} Transakt Protocol. Built with ENS and Account Abstraction.</div>
+        <div>© {new Date().getFullYear()} Transakt Protocol.</div>
         <div className="flex space-x-6">
           <a href="#" className="hover:app-text transition-colors">
             Terms of Service
