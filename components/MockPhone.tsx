@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   Send,
   Download,
@@ -71,7 +72,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
 
       {/* Floating Status HUD Pill 2: Bottom-Left */}
       <div className="absolute -bottom-6 -left-4 sm:-left-8 z-30 animate-float-delayed hidden xs:flex items-center space-x-2 px-3.5 py-1.5 rounded-full app-surface border border-black/10 dark:border-white/10 shadow-lg backdrop-blur-md">
-        <WorldIdIcon className="w-4 h-4 text-emerald-500" />
+        <Image src="/world-id.png" alt="World ID" width={16} height={16} className="w-4 h-4 object-contain" />
         <span className="text-[11px] font-bold app-text tracking-tight">World ID Selfie Check Active</span>
       </div>
 
@@ -112,8 +113,8 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
               {/* Animated Scan Line */}
               <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-biometric-pulse"></div>
               
-              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
-                <WorldIdIcon className="w-8 h-8" />
+              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2 p-3">
+                <Image src="/world-id.png" alt="World ID" width={32} height={32} className="w-full h-full object-contain" />
               </div>
               <span className="text-[9px] font-bold text-emerald-400 tracking-wider uppercase">
                 Align Face

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { EnsIcon, PrivyIcon, WorldIdIcon } from "./Icons";
+import Image from "next/image";
 import { CheckCircle2, ArrowUpRight } from "lucide-react";
 
 export function SecuritySection() {
@@ -9,7 +9,7 @@ export function SecuritySection() {
     {
       name: "ENSv2",
       tag: "Hierarchical Registries",
-      icon: EnsIcon,
+      logo: "/ens.png",
       color: "blue",
       title: "ENSv2 Architecture",
       points: [
@@ -22,7 +22,7 @@ export function SecuritySection() {
     {
       name: "Privy",
       tag: "Embedded Wallets",
-      icon: PrivyIcon,
+      logo: "/privy.png",
       color: "emerald",
       title: "Privy Embedded Auth",
       points: [
@@ -35,7 +35,7 @@ export function SecuritySection() {
     {
       name: "World ID",
       tag: "Proof-of-Unique-Human",
-      icon: WorldIdIcon,
+      logo: "/world-id.png",
       color: "purple",
       title: "World ID Selfie Check",
       points: [
@@ -69,18 +69,16 @@ export function SecuritySection() {
             className="app-surface p-8 rounded-3xl border border-black/10 dark:border-white/10 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
           >
             <div>
-              {/* Card Header */}
+              {/* Card Header with Real Sponsor Logo */}
               <div className="flex items-center justify-between mb-6">
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform shadow-xs ${
-                    sponsor.color === "blue"
-                      ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                      : sponsor.color === "emerald"
-                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                      : "bg-purple-500/10 text-purple-600 dark:text-purple-400"
-                  }`}
-                >
-                  <sponsor.icon className="w-7 h-7" />
+                <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 flex items-center justify-center p-2.5 group-hover:scale-105 transition-transform shadow-xs overflow-hidden">
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} Logo`}
+                    width={44}
+                    height={44}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-black/5 dark:bg-white/5 app-muted">
                   {sponsor.tag}
