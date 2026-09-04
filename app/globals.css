@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-light: #F0EBE0;
+  --surface-light: #FBF8F1;
+  --accent-light: #1A5C3A;
+  --text-light: #1A1410;
+  --muted-light: #8E8777;
+  --border-light: rgba(26, 20, 16, 0.08);
+
+  --bg-dark: #18140F;
+  --surface-dark: #211C16;
+  --accent-dark: #00FF87;
+  --text-dark: #F0E8D8;
+  --muted-dark: #8E8475;
+  --border-dark: rgba(240, 232, 216, 0.08);
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.app-bg {
+  background-color: var(--bg-light);
+}
+
+.app-surface {
+  background-color: var(--surface-light);
+  border: 1px solid var(--border-light);
+}
+
+.app-accent {
+  color: var(--accent-light);
+}
+
+.app-accent-bg {
+  background-color: var(--accent-light);
+  color: #FBF8F1;
+}
+
+.app-text {
+  color: var(--text-light);
+}
+
+.app-muted {
+  color: var(--muted-light);
+}
+
+.dark .app-bg {
+  background-color: var(--bg-dark);
+}
+
+.dark .app-surface {
+  background-color: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+}
+
+.dark .app-accent {
+  color: var(--accent-dark);
+}
+
+.dark .app-accent-bg {
+  background-color: var(--accent-dark);
+  color: #0E1611;
+}
+
+.dark .app-text {
+  color: var(--text-dark);
+}
+
+.dark .app-muted {
+  color: var(--muted-dark);
+}
+
+/* Custom scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth glassmorphic effects */
+.glass-nav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #1A5C3A;
+  color: #FBF8F1;
+}
+
+.dark ::selection {
+  background-color: #00FF87;
+  color: #000000;
+}
