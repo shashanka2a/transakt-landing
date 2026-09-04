@@ -245,8 +245,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                 </div>
                 <div className="flex space-x-3 overflow-x-auto no-scrollbar pr-4 pb-1">
                   {/* Node 1: Alex */}
-                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden ring-2 ring-emerald-500">
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-emerald-500"></div>
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative border-2 border-emerald-500 bg-emerald-500/[0.03]">
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 flex items-center justify-center font-bold text-xs">
                         AS
@@ -274,8 +273,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   </div>
 
                   {/* Node 2: Mom */}
-                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-500"></div>
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative border border-black/10 dark:border-white/10">
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 flex items-center justify-center font-bold text-xs">
                         MS
@@ -296,8 +294,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
                   </div>
 
                   {/* Node 3: Vault */}
-                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative overflow-hidden opacity-80">
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500"></div>
+                  <div className="min-w-[145px] app-surface rounded-2xl p-3 shadow-sm flex flex-col relative border border-black/10 dark:border-white/10 opacity-80">
                     <div className="flex justify-between items-start mb-2">
                       <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-300 flex items-center justify-center font-bold text-xs">
                         <Lock size={12} />
