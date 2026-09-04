@@ -26,11 +26,11 @@ export function SecuritySection() {
       color: "emerald",
       title: "Privy Embedded Smart Auth",
       points: [
-        "Zero-seed-phrase onboarding via WebAuthn/FIDO2 hardware secure enclaves",
-        "ERC-4337 embedded smart wallets with invisible paymaster gas funding",
+        "Frictionless onboarding via Privy email, social, and passkey authentication",
+        "ERC-4337 embedded smart wallets with automated transaction sponsorship",
         "Seamless Multi-Party Computation (MPC) key management across family devices",
       ],
-      highlight: "FIDO2 Secure Enclave & MPC Sharding",
+      highlight: "Privy Smart Auth & MPC Sharding",
     },
     {
       name: "World ID",
@@ -51,14 +51,14 @@ export function SecuritySection() {
     <section id="security" className="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full app-surface border border-black/5 dark:border-white/5 mb-4 text-xs font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
-          <span>WEB3 PROTOCOL ARCHITECTURE</span>
+          <span>UNDER THE HOOD</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold app-text tracking-tight mb-4">
-          Hardened Web3 Infrastructure. <br className="hidden sm:block" />
-          Zero Single Points of Failure.
+          The tech stack behind Transakt. <br className="hidden sm:block" />
+          Built with ENSv2, Privy & World ID.
         </h2>
         <p className="text-base sm:text-lg app-muted">
-          Transakt eliminates custodial risk by coupling hierarchical <span className="font-semibold app-text">ENSv2 registries</span>, <span className="font-semibold app-text">Privy secure enclaves</span>, ERC-4337 paymasters, and <span className="font-semibold app-text">World ID zero-knowledge proofs</span> on ETH Sepolia.
+          We combine hierarchical <span className="font-semibold app-text">ENSv2 subnames</span>, <span className="font-semibold app-text">Privy smart accounts</span>, and <span className="font-semibold app-text">World ID zero-knowledge proofs</span> on ETH Sepolia to keep your family treasury secure and non-custodial.
         </p>
       </div>
 

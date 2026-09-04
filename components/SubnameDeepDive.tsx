@@ -135,7 +135,7 @@ export function SubnameDeepDive() {
               {
                 step: "3",
                 title: "Send one-tap invite link",
-                desc: "Recipient activates their subname via PWA with World ID Selfie Check in seconds.",
+                desc: "Recipient activates their subname via the app with World ID Selfie Check in seconds.",
               },
             ].map((item) => (
               <div key={item.step} className="flex items-start space-x-4">

@@ -32,16 +32,16 @@ export const metadata: Metadata = {
     template: "%s | Transakt",
   },
   description:
-    "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
+    "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
   keywords: [
     "Transakt",
     "Family Crypto",
     "ENS Subnames",
-    "Privy Passkeys",
+    "Privy",
     "Account Abstraction",
     "ERC-4337",
     "Family Treasury",
-    "Gasless Web3",
+    "Uniswap Swaps",
     "World ID Selfie Check",
     "ETH Sepolia",
     "Ethereum Sepolia",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
+      "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
     url: "https://transakt.family",
     siteName: "Transakt",
     locale: "en_US",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Transakt | Crypto for the Whole Family",
     description:
-      "No seed phrases. Claim your family ENS identity, issue gasless subnames, and secure high-value transfers with World ID Selfie Check.",
+      "Claim your family ENS identity, issue custom subnames, set spending rules and permissions, and secure high-value transfers with World ID Selfie Check.",
     creator: "@transakt_eth",
   },
   icons: {
@@ -100,7 +100,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Transakt",
-  "operatingSystem": "All (Web PWA, iOS, Android, Desktop)",
+  "operatingSystem": "All (Web App, iOS, Android, Desktop)",
   "applicationCategory": "FinanceApplication",
   "offers": {
     "@type": "Offer",
@@ -108,12 +108,12 @@ const jsonLd = {
     "priceCurrency": "USD",
   },
   "description":
-    "Non-custodial family treasury and ENS identity portal powered by Passkeys and ERC-4337 Account Abstraction.",
+    "Non-custodial family treasury and ENS identity portal powered by Privy and ERC-4337 Account Abstraction.",
   "url": "https://transakt.family",
   "featureList": [
-    "Biometric Passkey Authentication (FIDO2)",
+    "Seamless Privy Smart Onboarding",
     "ENS Offchain Subname Issuance",
-    "ERC-4337 Gasless Paymasters",
+    "Uniswap Token Swaps",
     "Multi-Sig Guardian Social Recovery",
     "World ID Zero-Knowledge Step-Up Auth",
   ],

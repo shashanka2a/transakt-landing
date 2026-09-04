@@ -24,15 +24,15 @@ interface MockPhoneProps {
 
 type TabType = "home" | "send" | "manage" | "activity";
 
-interface PWAStep {
+interface DemoStep {
   id: string;
   tab: TabType;
   title: string;
 }
 
-const PWA_STEPS: PWAStep[] = [
+const DEMO_STEPS: DemoStep[] = [
   { id: "home", tab: "home", title: "Family Treasury" },
-  { id: "send", tab: "send", title: "Gasless Send" },
+  { id: "send", tab: "send", title: "Instant Send" },
   { id: "selfie", tab: "send", title: "World ID Selfie Check" },
   { id: "activity", tab: "activity", title: "L2 Activity" },
 ];
@@ -45,18 +45,18 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
     setMounted(true);
   }, []);
 
-  // Automated continuous PWA flow loop (Non-clickable tabs / automated demo)
+  // Automated continuous app flow loop (Non-clickable tabs / automated demo)
   useEffect(() => {
     if (!mounted) return;
 
     const interval = setInterval(() => {
-      setStepIndex((prev) => (prev + 1) % PWA_STEPS.length);
+      setStepIndex((prev) => (prev + 1) % DEMO_STEPS.length);
     }, 3800);
 
     return () => clearInterval(interval);
   }, [mounted]);
 
-  const currentStep = PWA_STEPS[stepIndex];
+  const currentStep = DEMO_STEPS[stepIndex];
   const activeTab = currentStep.tab;
 
   return (
@@ -148,7 +148,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
             </div>
             <div className="flex flex-col text-left">
               <span className="font-bold text-sm tracking-tight app-text leading-tight">smithfam.eth</span>
-              <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">PWA • ETH Sepolia</span>
+              <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">ETH Sepolia</span>
             </div>
           </div>
           <div className="w-7 h-7 rounded-full app-surface flex items-center justify-center shadow-xs">
@@ -311,7 +311,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           {/* STEP 2 & 3: GASLESS SEND & WORLD ID CHECK */}
           {activeTab === "send" && (
             <div className="p-4 space-y-3 animate-count-up">
-              <h3 className="text-sm font-bold app-text text-left">Instant Gasless Send (PWA)</h3>
+              <h3 className="text-sm font-bold app-text text-left">Instant Send</h3>
               <div className="app-surface p-4 rounded-2xl border border-black/5 dark:border-white/5 space-y-3 text-left">
                 <label className="text-[10px] font-bold app-muted uppercase">Recipient Subname</label>
                 <div className="flex items-center bg-black/5 dark:bg-white/5 p-2.5 rounded-xl">
@@ -389,7 +389,7 @@ export function MockPhone({ isDark = false }: MockPhoneProps) {
           )}
         </div>
 
-        {/* Bottom Nav Bar (Active tab tracks PWA flow loop, non-clickable) */}
+        {/* Bottom Nav Bar (Active tab tracks demo flow loop, non-clickable) */}
         <div className="absolute bottom-0 w-full h-15 app-surface border-t border-black/5 dark:border-white/5 rounded-b-[2.5rem] flex justify-around items-center px-4 py-1.5 z-20 shadow-lg">
           <div
             className={`flex flex-col items-center space-y-0.5 transition-all ${

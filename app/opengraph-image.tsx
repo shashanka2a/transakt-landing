@@ -70,7 +70,7 @@ export default function OGImage() {
           >
             Crypto for the <span style={{ color: "#00FF87" }}>Whole Family.</span>
             <br />
-            Finally Simple.
+            Made simple.
           </div>
           <div
             style={{
@@ -80,7 +80,7 @@ export default function OGImage() {
               lineHeight: 1.4,
             }}
           >
-            Passkey Native (Privy) • ENS Family Subnames • World ID Selfie Check • Gasless L2
+            Privy Smart Auth • ENS Family Subnames • World ID Selfie Check • ETH Sepolia
           </div>
         </div>
 

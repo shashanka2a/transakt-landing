@@ -40,11 +40,6 @@ export function Footer() {
                 ZK Step-Up
               </a>
             </li>
-            <li>
-              <a href="#" className="hover:app-text transition-colors">
-                PWA Mobile App
-              </a>
-            </li>
           </ul>
         </div>
 
@@ -67,11 +62,6 @@ export function Footer() {
             <li>
               <a href="#" className="hover:app-text transition-colors">
                 Smart Contracts
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:app-text transition-colors">
-                Audit Reports
               </a>
             </li>
           </ul>

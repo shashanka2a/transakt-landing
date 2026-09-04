@@ -1,23 +1,23 @@
 "use client";
 
 import React from "react";
-import { Fingerprint, Shield, Clock, KeyRound, ArrowUpRight } from "lucide-react";
+import { Fingerprint, Shield, Clock, ArrowLeftRight, ArrowUpRight } from "lucide-react";
 
 const features = [
   {
     icon: Fingerprint,
-    title: "One-Tap Login",
-    tag: "No Passwords",
+    title: "Frictionless Login",
+    tag: "Seamless Onboarding",
     description:
-      "Sign in instantly using Face ID or your fingerprint on your phone. No browser extensions, no passwords, and zero seed phrases to write down or lose.",
-    highlight: "Log in just like Apple Pay",
+      "Sign up with your email or social account in seconds. Powered by Privy, your secure smart account is generated automatically under the hood with zero complex setup.",
+    highlight: "One-tap email & social onboarding",
   },
   {
     icon: Shield,
     title: "Readable Family Names",
     tag: "Simple Usernames",
     description:
-      "Replace confusing 42-character crypto addresses with simple names like alex.smithfam.eth. Sending money is as simple as sending a text message.",
+      "Replace confusing crypto addresses with simple names like alex.smithfam.eth. Sending money is as simple as sending a text message.",
     highlight: "Never copy-paste cryptic addresses",
   },
   {
@@ -25,16 +25,16 @@ const features = [
     title: "Automatic Allowances",
     tag: "Family Budgeting",
     description:
-      "Schedule weekly pocket money drops for kids with automatic spending limits. Help your family build healthy financial habits with built-in parental guardrails.",
+      "Schedule weekly pocket money drops for kids with automatic spending limits. Help your family build healthy financial habits with built-in parental controls.",
     highlight: "Automated pocket money with limits",
   },
   {
-    icon: KeyRound,
-    title: "Zero Gas Fees",
-    tag: "100% Free Transfers",
+    icon: ArrowLeftRight,
+    title: "Swap & Invest",
+    tag: "Powered by Uniswap",
     description:
-      "Every transaction is completely gas-free for your family. No need to buy native cryptocurrency or calculate network fees just to send money.",
-    highlight: "Zero transaction fee confusion",
+      "Swap effortlessly into your favourite crypto assets and tokens directly inside the app using Uniswap. Build and manage your family portfolio with simple, intuitive tools.",
+    highlight: "Instant decentralized swaps",
   },
 ];
 
@@ -50,7 +50,7 @@ export function Features() {
           Nothing complicated.
         </h2>
         <p className="text-base sm:text-lg app-muted">
-          We removed seed phrases, confusing wallet addresses, and gas fees so your entire family can easily manage money together.
+          We removed complex setups, confusing wallet addresses, and complicated tools so your entire family can easily manage money together.
         </p>
       </div>
 

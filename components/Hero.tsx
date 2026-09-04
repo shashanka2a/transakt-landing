@@ -28,12 +28,12 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight app-text leading-[1.08] mb-6">
             Crypto for the <br className="hidden sm:block" />
             <span className="app-accent">Whole Family.</span> <br />
-            Finally Simple.
+            Made simple.
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg lg:text-xl app-muted max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed font-normal">
-            No seed phrases. Claim your family ENS identity, issue gasless subnames, and authorize transfers securely with World ID Selfie Check.
+            Claim your family ENS identity, issue custom subnames, set custom spending rules and permissions, and authorize transfers securely with World ID Selfie Check.
           </p>
 
           {/* Action Buttons */}
@@ -43,7 +43,7 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
               className="w-full sm:w-auto px-8 py-4 app-accent-bg rounded-full font-bold text-base sm:text-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center space-x-2.5 shadow-md"
             >
               <Smartphone className="w-5 h-5" />
-              <span>Launch App (PWA)</span>
+              <span>Launch App</span>
             </button>
             <a
               href="#how-it-works"
@@ -58,11 +58,11 @@ export function Hero({ onOpenEarlyAccess }: HeroProps) {
           <div className="mt-10 pt-8 border-t border-black/5 dark:border-white/5 flex flex-wrap items-center justify-center lg:justify-start gap-6 app-muted text-xs sm:text-sm font-semibold">
             <div className="flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 app-accent" />
-              <span>Zero seed phrases</span>
+              <span>Privy Smart Auth</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 app-accent" />
-              <span>ENS Native (L2 Subnames)</span>
+              <span>ENS Family Subnames</span>
             </div>
             <div className="flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 app-accent" />
